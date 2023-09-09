@@ -204,12 +204,12 @@ function Nav({}: Props) {
                     className=" bg-white absolute -bottom-[154px] -right-14    space-y-3   rounded-lg  w-[180px] p-6  "
                   >
                     <div className="group/category">
-                      <p>Men's Watch</p>
+                      <p>Men&apos;s Watch</p>
                       <div className=" w-0 h-[1px] group-hover/category:w-full transition-all ease-linear  duration-200 bg-black"></div>
                     </div>
 
                     <div className="group/category">
-                      <p>Women's Watch</p>
+                      <p>Women&apos;s Watch</p>
                       <div className=" w-0 h-[1px] group-hover/category:w-full transition-all ease-linear  duration-200 bg-black"></div>
                     </div>
                   </motion.div>
