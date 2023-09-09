@@ -30,7 +30,7 @@ function Nav({}: Props) {
   const storeHover = useRef(null);
   const isStoresHover = useHover(storeHover);
   return (
-    <div className="">
+    <div className=" z-20">
       <div className="  p-4  md:px-6 lg:hidden flex justify-between">
         <div className=" flex space-x-6">
           <Bars3Icon className=" w-8" />
@@ -135,7 +135,7 @@ function Nav({}: Props) {
                 initial={{ opacity: 0, y: -40 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -40 }}
-                className=" justify-between  flex p-10 absolute bg-white -bottom-[320px] w-[1200px]"
+                className=" justify-between  z-20 flex p-10 absolute bg-white -bottom-[320px] w-[1200px]"
               >
                 <div className=" space-y-3">
                   <div>
@@ -201,7 +201,7 @@ function Nav({}: Props) {
                     initial={{ opacity: 0, y: -40 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -40 }}
-                    className=" bg-white absolute -bottom-[154px] -right-14    space-y-3   rounded-lg  w-[180px] p-6  "
+                    className=" bg-white absolute z-20 -bottom-[154px] -right-14    space-y-3   rounded-lg  w-[180px] p-6  "
                   >
                     <div className="group/category">
                       <p>Men&apos;s Watch</p>
@@ -237,7 +237,7 @@ function Nav({}: Props) {
                     initial={{ opacity: 0, y: -40 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -40 }}
-                    className=" bg-white absolute -bottom-[154px] -right-14    space-y-3   rounded-lg  w-[180px] p-6  "
+                    className=" bg-white absolute -bottom-[154px] z-20 -right-14    space-y-3   rounded-lg  w-[180px] p-6  "
                   >
                     <div className="group/category">
                       <p>Automotive</p>
