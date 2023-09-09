@@ -1,13 +1,12 @@
 import Image from 'next/image'
 import Nav from '../../components/Nav'
+import Header from '../../components/Header'
 
 export default function Home() {
   return (
     <main>
       <Nav /> 
-      <div className=' w-full h-[400px] bg-[#242424]'>
-
-      </div>
+      <Header />
     </main>
   )
 }
