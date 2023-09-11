@@ -11,6 +11,7 @@ export default function Home() {
       <Header />
       <Collections />
       <Featured />
+      <div className=' '>test</div>
     </main>
   )
 }

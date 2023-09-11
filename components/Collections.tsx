@@ -6,7 +6,7 @@ import phone from "../assests/collections/iphone.jpg";
 type Props = {};
 function Collections({}: Props) {
   return (
-    <div className=" p-4 space-y-4 lg:w-[90%] lg:m-auto  pt-20">
+    <div className=" p-4 space-y-4 md:w-[90%] md:m-auto  pt-20">
         <div className="flex space-x-4 items-center">
       <h2 className=" font-semibold text-3xl lg:text-4xl">Collections</h2>
 <span className=" hidden lg:flex w-full h-[4px] bg-gray-200"></span>
