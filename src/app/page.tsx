@@ -3,6 +3,7 @@ import Nav from '../../components/Nav'
 import Header from '../../components/Header'
 import Collections from '../../components/Collections'
 import Featured from '../../components/Featured'
+import TopLaptops from '../../components/TopLaptops'
 
 export default function Home() {
   return (
@@ -11,7 +12,7 @@ export default function Home() {
       <Header />
       <Collections />
       <Featured />
-      <div className=' '>test</div>
+     <TopLaptops />
     </main>
   )
 }

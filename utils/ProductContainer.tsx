@@ -8,7 +8,8 @@ import star from "../assests/rating/star.png";
 import halfstar from "../assests/rating/halfstar.png";
 import { BookmarkIcon } from "@heroicons/react/24/solid";
 import { AnimatePresence, motion } from "framer-motion";
-function FeaturedProduct({
+import { ShoppingBagIcon } from "@heroicons/react/24/outline";
+function ProductContainer({
   rating,
   thumbnail,
   title,
@@ -17,7 +18,7 @@ function FeaturedProduct({
 }: Product) {
   const [favItems, setFavItems] = useState<boolean>(false);
   return (
-    <div className=" bg-white group  relative transition-all ease-linear  lg:hover:scale-105  z-0 hover:z-50  lg:hover:shadow-2xl lg:hover:rounded-lg lg:hover:border-none w-[320px] md:w-[240px]  md:min-w-[240px] lg:min-w-[280px] p-6 space-y-2  border  ">
+    <div className=" bg-white group z-0 hover:z-50 relative transition-all ease-linear  lg:hover:scale-105  lg:hover:shadow-lg lg:hover:rounded-lg lg:hover:border-none w-[220px] space-y-2   p-6  border h-[450px]  ">
       <div className=" relative ">
         <Image
           src={thumbnail}
@@ -26,7 +27,7 @@ function FeaturedProduct({
           height={200}
           className=" w-[240px] h-[200px] object-cover  object-center rounded-lg"
         />
-        <p className=" mt-4 font-bold text-md line-clamp-1">{title}</p>
+        <p className=" mt-4 font-bold text-md ">{title}</p>
       </div>
       <div className=" flex">
         {new Array(Math.floor(rating)).fill(0).map((_, index) => (
@@ -47,10 +48,12 @@ function FeaturedProduct({
           ${(price - (price * discountPercentage) / 100).toFixed(0)}
         </p>
       </div>
+
       <div className="      pt-4 flex items-center  justify-between">
-        <button className=" hover:bg-white  hover:text-blue-500 transition-all ease-linear duration-150 border border-blue-500 bg-blue-500 text-white px-4  py-3 rounded-lg text-sm">
-          Add to cart
-        </button>
+        <div className=" w-[50px] h-[40px] flex justify-center group/cart hover:bg-white bg-blue-500 border transition-all ease-linear duration-200 border-blue-500 rounded-lg  ">
+
+        <ShoppingBagIcon className=" w-6  text-white  group-hover/cart:text-blue-500 transition-all ease-linear duration-200" />
+        </div> 
         {favItems ? (
           <BookmarkIcon
             className=" w-8  text-yellow-400  cursor-pointer"
@@ -66,4 +69,4 @@ function FeaturedProduct({
     </div>
   );
 }
-export default FeaturedProduct;
+export default ProductContainer;
