@@ -6,15 +6,15 @@ import phone from "../assests/collections/iphone.jpg";
 type Props = {};
 function Collections({}: Props) {
   return (
-    <div className=" p-4 space-y-4 lg:w-[1200px] lg:m-auto  pt-20">
+    <div className=" p-4 space-y-4 md:w-[90%] md:m-auto  pt-20">
         <div className="flex space-x-4 items-center">
       <h2 className=" font-semibold text-3xl lg:text-4xl">Collections</h2>
 <span className=" hidden lg:flex w-full h-[4px] bg-gray-200"></span>
         </div>
 
       {/** Collections Containers */}
-      <div className=" flex lg:justify-center    scrollbar-hide overflow-x-scroll space-x-4  ">
-        <div className="  overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[300px] relative ">
+      <div className=" flex lg:justify-center    scrollbar-hide overflow-x-scroll space-x-4 lg:space-x-6  ">
+        <div className="  overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] relative ">
           <Image
             src={watch}
             alt="watch collections"
@@ -27,7 +27,7 @@ function Collections({}: Props) {
             <p className=" text-white  text-sm ">20 products</p>
           </div>
         </div>
-        <div className=" overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[300px] relative ">
+        <div className=" overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] relative ">
           <Image
             src={laptop}
             alt="laptop collections"
@@ -40,7 +40,7 @@ function Collections({}: Props) {
             <p className=" text-white  text-sm ">8 products</p>
           </div>
         </div>
-        <div className=" overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[300px] relative ">
+        <div className=" overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] relative ">
           <Image
             src={phone}
             alt="phone collections"
@@ -51,7 +51,7 @@ function Collections({}: Props) {
             <p className=" text-white  text-sm ">10 products</p>
           </div>
         </div>
-        <div className=" overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[300px] relative ">
+        <div className=" overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] relative ">
           <Image
             src={clothing}
             alt="clothing collections"
