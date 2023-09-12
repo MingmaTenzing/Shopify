@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 import { fetchLaptops } from "../dummyjson/fetchdata";
 import { Product } from "../types/product-type";
-import Featured from "./Featured";
-import FeaturedProduct from "../utils/FeaturedProduct";
+
 import Image from "next/image";
 import laptopBanne from "../assests/featured laptops.webp";
 import ProductContainer from "../utils/ProductContainer";
@@ -24,7 +23,7 @@ function TopLaptops({}: Props) {
 
   return (
     <div className=" space-y-4 md:space-y-0 md:flex  lg:justify-between md:flex-row-reverse w-full items-center relative">
-      <div className="  space-y-4 md:w-[60%] lg:w-auto  m-auto">
+      <div className="  space-y-4 md:w-[60%]  m-auto">
         <div className=" relative lg:p-0 p-4">
           <h2 className="uppercase  font-semibold text-5xl text-gray-200">
             {" "}
@@ -79,9 +78,9 @@ function TopLaptops({}: Props) {
           </button>
         </div>
       </div>
-      <div className="  md:w-[40%] lg:w-auto ">
+      <div className="  md:w-[40%] lg:w-[40%] ">
 
-      <Image src={laptopBanne} alt=" laptops" className="   md:w-[90%] md:h-[500px]  lg:h-[504px] object-cover object-center" />
+      <Image src={laptopBanne} alt=" laptops" className="   md:w-[90%] md:h-[500px]  lg:h-[504px] lg:w-[full] object-cover object-center" />
       </div>
     </div>
   );

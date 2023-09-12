@@ -4,6 +4,7 @@ import Header from '../../components/Header'
 import Collections from '../../components/Collections'
 import Featured from '../../components/Featured'
 import TopLaptops from '../../components/TopLaptops'
+import ProductCategories from '../../components/ProductCategories'
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Collections />
       <Featured />
      <TopLaptops />
+     <ProductCategories />
     </main>
   )
 }
