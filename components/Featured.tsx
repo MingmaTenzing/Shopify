@@ -33,8 +33,8 @@ function Featured({}: Props) {
       <h2 className=" font-semibold text-2xl md:text-3xl lg:text-4xl ">Featured Products</h2>
       <span className="   flex-grow h-1 bg-gray-200"></span>
       </div>
-      <div className="mt-4 lg:mt-8 flex flex-col md:flex-row md:overflow-x-scroll scrollbar-hide  ">
-        {smartphones?.map((device) => (
+      <div className="mt-4 lg:mt-8 flex flex-col items-center md:flex-row   overflow-x-scroll  scrollbar-hide  ">
+        {smartphones?.slice(0,5).map((device) => (
           <FeaturedProduct
             id={device.id}
             description={device.description}
