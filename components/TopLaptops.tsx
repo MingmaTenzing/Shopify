@@ -22,8 +22,8 @@ function TopLaptops({}: Props) {
   console.log(featuredLaptops);
 
   return (
-    <div className=" space-y-4 md:space-y-0 md:flex  lg:justify-between md:flex-row-reverse w-full items-center relative">
-      <div className="  space-y-4 md:w-[60%]  m-auto">
+    <div className=" space-y-4 md:space-y-0 md:flex lg:pr-8  lg:justify-between md:flex-row-reverse w-full items-center relative">
+      <div className="  space-y-4 md:w-[60%] lg:w-[45%] m-auto">
         <div className=" relative lg:p-0 p-4">
           <h2 className="uppercase  font-semibold text-5xl text-gray-200">
             {" "}
@@ -78,7 +78,7 @@ function TopLaptops({}: Props) {
           </button>
         </div>
       </div>
-      <div className="  md:w-[40%] lg:w-[40%] ">
+      <div className="  md:w-[40%] lg:w-[55%] ">
 
       <Image src={laptopBanne} alt=" laptops" className="   md:w-[90%] md:h-[500px]  lg:h-[504px] lg:w-[full] object-cover object-center" />
       </div>
