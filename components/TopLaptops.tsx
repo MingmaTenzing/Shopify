@@ -29,48 +29,21 @@ function TopLaptops({}: Props) {
             {" "}
             top laptops{" "}
           </h2>
-          <p className=" uppercase text-lg absolute top-10 lg:top-6">Woodstock Choice</p>
+          <p className=" uppercase text-lg absolute top-10 lg:top-6">
+            Woodstock Choice
+          </p>
         </div>
         <div className=" ">
           <span className=" lg:hidden flex  justify-center">
-          {featuredLaptops?.slice(0, 2).map((device) => (
-            <ProductContainer 
-              id={device.id}
-              description={device.description}
-              stock={device.stock}
-              brand={device.brand}
-              category={device.category}
-              images={device.images}
-              key={device.id}
-              rating={device.rating}
-              thumbnail={device.thumbnail}
-              title={device.title}
-              price={device.price}
-              discountPercentage={device.discountPercentage}
-            />
-          ))}
-
+            {featuredLaptops?.slice(0, 2).map((device) => (
+              <ProductContainer key={device.id} product={device} />
+            ))}
           </span>
           <span className=" hidden lg:flex">
-          {featuredLaptops?.slice(0, 3).map((device) => (
-            <ProductContainer 
-              id={device.id}
-              description={device.description}
-              stock={device.stock}
-              brand={device.brand}
-              category={device.category}
-              images={device.images}
-              key={device.id}
-              rating={device.rating}
-              thumbnail={device.thumbnail}
-              title={device.title}
-              price={device.price}
-              discountPercentage={device.discountPercentage}
-            />
-          ))}
-
+            {featuredLaptops?.slice(0, 3).map((device) => (
+              <ProductContainer product={device} key={device.id} />
+            ))}
           </span>
-          
         </div>
         <div className=" flex justify-center ">
           <button className=" cursor-pointer border-blue-500 border text-blue-500 px-3 py-2 rounded-lg">
@@ -79,8 +52,11 @@ function TopLaptops({}: Props) {
         </div>
       </div>
       <div className="  md:w-[40%] lg:w-[55%] ">
-
-      <Image src={laptopBanne} alt=" laptops" className="   md:w-[90%] md:h-[500px]  lg:h-[504px] lg:w-[full] object-cover object-center" />
+        <Image
+          src={laptopBanne}
+          alt=" laptops"
+          className="   md:w-[90%] md:h-[500px]  lg:h-[504px] lg:w-[full] object-cover object-center"
+        />
       </div>
     </div>
   );
