@@ -22,7 +22,7 @@ function TopLaptops({}: Props) {
   console.log(featuredLaptops);
 
   return (
-    <div className=" space-y-4 md:space-y-0 md:flex lg:pr-8  lg:justify-between md:flex-row-reverse w-full items-center relative">
+    <div className=" space-y-4 md:space-y-0 md:flex lg:pr-4  lg:justify-between md:flex-row-reverse w-full items-center relative">
       <div className="  space-y-4 md:w-[60%] lg:w-[45%] m-auto">
         <div className=" relative lg:p-0 p-4">
           <h2 className="uppercase  font-semibold text-5xl text-gray-200">
@@ -32,7 +32,7 @@ function TopLaptops({}: Props) {
           <p className=" uppercase text-lg absolute top-10 lg:top-6">Woodstock Choice</p>
         </div>
         <div className=" ">
-          <span className=" lg:hidden flex  justify-center flex-wrap">
+          <span className=" lg:hidden flex  justify-center">
           {featuredLaptops?.slice(0, 2).map((device) => (
             <ProductContainer 
               id={device.id}
