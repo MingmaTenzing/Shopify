@@ -18,7 +18,7 @@ function ProductContainer({
 }: Product) {
   const [favItems, setFavItems] = useState<boolean>(false);
   return (
-    <div className=" bg-white group z-0 hover:z-50 relative transition-all ease-linear  lg:hover:scale-105  lg:hover:shadow-lg lg:hover:rounded-lg lg:hover:border-none w-[190px] md:w-[220px] space-y-2   p-6  border h-[450px]  ">
+    <div className=" bg-white group z-0 hover:z-50 relative transition-all ease-linear  lg:hover:scale-105  lg:hover:shadow-lg lg:hover:rounded-lg lg:hover:border-none w-[178px] md:w-[220px] space-y-2   p-6  border h-[450px]  ">
       <div className=" relative ">
         <Image
           src={thumbnail}
