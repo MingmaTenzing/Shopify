@@ -9,6 +9,7 @@ import TopMensShirts from '../../components/TopMensShirts'
 import BrandsCarousel from '../../components/BrandsCarousel'
 import BrandPromises from '../../components/BrandPromises'
 import WoodstockNews from '../../components/WoodstockNews'
+import Faqs from '../../components/Faqs'
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
      <BrandsCarousel />
      <BrandPromises />
      <WoodstockNews />
+     <Faqs />
     </main>
   )
 }
