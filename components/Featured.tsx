@@ -11,6 +11,7 @@ import star from "../assests/rating/star.png";
 import halfstar from "../assests/rating/halfstar.png";
 import { BookmarkIcon, ScaleIcon } from "@heroicons/react/24/solid";
 import { useHover } from "usehooks-ts";
+import TitleSection from "../utils/TitleSection";
 type Props = {};
 function Featured({}: Props) {
   const [smartphones, setSmartphones] = useState<Product[]>();
@@ -29,10 +30,7 @@ function Featured({}: Props) {
 
   return (
     <div className=" z-20 md:w-[90%] lg:w-[1200px] m-auto  p-4 py-20">
-      <div className=" flex items-center space-x-4">
-      <h2 className=" font-semibold text-2xl md:text-3xl lg:text-4xl ">Featured Products</h2>
-      <span className="   flex-grow h-1 bg-gray-200"></span>
-      </div>
+      <TitleSection title="Featured Products" />
       <div className="mt-4 lg:mt-8 flex flex-col  md:flex-row  justify-start    overflow-x-scroll  scrollbar-hide  ">
         {smartphones?.slice(0,5).map((device) => (
           <FeaturedProduct

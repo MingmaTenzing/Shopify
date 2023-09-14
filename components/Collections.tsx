@@ -3,14 +3,12 @@ import watch from "../assests/collections/premium watch collections.webp";
 import laptop from "../assests/collections/laptop.jpg";
 import clothing from "../assests/collections/clothing.jpg";
 import phone from "../assests/collections/iphone.jpg";
+import TitleSection from "../utils/TitleSection";
 type Props = {};
 function Collections({}: Props) {
   return (
     <div className=" p-4 space-y-4 md:w-[90%] md:m-auto lg:w-[1200px]  pt-20">
-        <div className="flex space-x-4 items-center">
-      <h2 className=" font-semibold text-3xl lg:text-4xl">Collections</h2>
-<span className=" hidden lg:flex w-full h-[4px] bg-gray-200"></span>
-        </div>
+      <TitleSection title="Collections" />
 
       {/** Collections Containers */}
       <div className=" flex lg:justify-center    scrollbar-hide overflow-x-scroll space-x-4 lg:space-x-6  ">
