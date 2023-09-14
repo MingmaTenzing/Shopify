@@ -28,7 +28,7 @@ function Featured({}: Props) {
   const rating = 4.3;
 
   return (
-    <div className=" z-20 md:w-[90%]  m-auto  p-4 py-20">
+    <div className=" z-20 md:w-[90%] lg:w-[1200px] m-auto  p-4 py-20">
       <div className=" flex items-center space-x-4">
       <h2 className=" font-semibold text-2xl md:text-3xl lg:text-4xl ">Featured Products</h2>
       <span className="   flex-grow h-1 bg-gray-200"></span>
