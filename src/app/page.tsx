@@ -7,6 +7,7 @@ import TopLaptops from '../../components/TopLaptops'
 import ProductCategories from '../../components/ProductCategories'
 import TopMensShirts from '../../components/TopMensShirts'
 import BrandsCarousel from '../../components/BrandsCarousel'
+import BrandPromises from '../../components/BrandPromises'
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
      <ProductCategories />
      <TopMensShirts />
      <BrandsCarousel />
+     <BrandPromises />
     </main>
   )
 }
