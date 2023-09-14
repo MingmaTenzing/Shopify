@@ -17,7 +17,7 @@ type Props = {};
 
 function BrandsCarousel({}: Props) {
   return (
-    <div className=" w-full py-10 flex overflow-hidden  ">
+    <div className=" w-full py-4 flex overflow-hidden  ">
       <div className=" flex items-center space-x-6  flex-nowrap animate-infinite-slider ">
         <Image
           loading="eager"
