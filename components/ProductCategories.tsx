@@ -8,7 +8,7 @@ import ProductCategory from "../utils/ProductCategory";
 type Props = {};
 function ProductCategories({}: Props) {
   return (
-    <div className=" mt-8 flex overflow-x-scroll  md:flex-wrap  lg:flex lg:flex-nowrap md:w-full xl:justify-center xl:min-w-full   scrollbar-hide ">
+    <div className=" my-10 flex overflow-x-scroll  md:flex-wrap  lg:flex lg:flex-nowrap md:w-full xl:justify-center xl:min-w-full   scrollbar-hide ">
       <ProductCategory
         img={cellphone}
         title="Smartphone"
