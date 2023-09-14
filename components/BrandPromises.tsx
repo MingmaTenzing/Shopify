@@ -9,7 +9,7 @@ function BrandPromises({}: Props) {
   return (
     <div className=" my-10 p-4  flex flex-col items-center justify-center space-y-8 md:space-y-0 md:flex-row  md:space-x-6  lg:w-[1200px] m-auto">
       <div className=" flex flex-col items-center space-y-2">
-        <TruckIcon className=" w-20 lg:w-32 text-blue-500  bg-slate-100 p-4 rounded-full" />
+        <TruckIcon className="   w-20  lg:w-32 text-blue-500  bg-slate-100 p-4 rounded-full" />
         <p className=" font-light text-center text-gray-500  text-md">
           Enjoy complimentary free shipping. Take advantage of our free shipping
           offer.

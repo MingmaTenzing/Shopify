@@ -31,7 +31,7 @@ function Featured({}: Props) {
   return (
     <div className=" z-20 md:w-[90%] lg:w-[1200px] m-auto  p-4 py-20">
       <TitleSection title="Featured Products" />
-      <div className="mt-4 lg:mt-8 flex flex-col  md:flex-row  justify-start    overflow-x-scroll  scrollbar-hide  ">
+      <div className="mt-4 lg:mt-8 flex flex-col  md:flex-row   items-center   overflow-x-scroll  scrollbar-hide  ">
         {smartphones?.slice(0,5).map((device) => (
           <FeaturedProduct
             id={device.id}
