@@ -3,7 +3,7 @@ import bg from "../assests/footer-bg.jpg";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 
 type Props = {};
-function Subscribetoemail({}: Props) {
+function NewsLetter({}: Props) {
   return (
     <div className=" mt-10">
       <div className=" relative w-full  h-[300px]">
@@ -30,4 +30,4 @@ function Subscribetoemail({}: Props) {
     </div>
   );
 }
-export default Subscribetoemail;
+export default NewsLetter;
