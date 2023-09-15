@@ -10,6 +10,7 @@ import BrandsCarousel from '../../components/BrandsCarousel'
 import BrandPromises from '../../components/BrandPromises'
 import WoodstockNews from '../../components/WoodstockNews'
 import Faqs from '../../components/Faqs'
+import NewsLetter from '../../components/NewsLetter'
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
      <BrandPromises />
      <WoodstockNews />
      <Faqs />
+     <NewsLetter />
     </main>
   )
 }
