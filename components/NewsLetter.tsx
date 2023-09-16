@@ -5,8 +5,8 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 type Props = {};
 function NewsLetter({}: Props) {
   return (
-    <div className=" mt-10">
-      <div className=" relative w-full  h-[300px]">
+    <div className=" mt-10 overflow-hidden">
+      <div className=" text-center  relative w-full  h-[300px]">
         <Image src={bg} alt="bg" className=" brightness-50 w-full h-full object-cover" />
         <div className=" absolute top-1/2 left-1/2 -translate-x-1/2  w-full m-auto flex flex-col items-center -translate-y-1/2 z-10 space-y-4">
           <p className=" text-white md:text-4xl text-3xl font-bold">
