@@ -9,6 +9,7 @@ type Props = {
   QA: QA;
 };
 function FaqContainer({ QA }: Props) {
+ 
   const [clicked, setClicked] = useState<boolean>();
   const variants = {
     rotate: {
