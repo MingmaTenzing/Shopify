@@ -16,11 +16,12 @@ import facebook from "../assests/socials/facebook.svg";
 import pinterest from "../assests/socials/pinterest.svg";
 import instagram from "../assests/socials/instagram.svg";
 import { useRef } from "react";
-
+import { useScrollDirection } from "react-use-scroll-direction";
 import { useHover } from "usehooks-ts";
 import { AnimatePresence, motion } from "framer-motion";
 import iphoneImg from "../assests/banner iphone.jpg";
 
+import { useEffect, useState } from "react";
 type Props = {};
 function Nav({}: Props) {
   const watchHover = useRef(null);
@@ -29,9 +30,19 @@ function Nav({}: Props) {
   const isAccessoriesHover = useHover(accessoriesHover);
   const storeHover = useRef(null);
   const isStoresHover = useHover(storeHover);
+  const { isScrollingUp, isScrollingDown, isScrollingY } = useScrollDirection();
+  const [sticktoTop, setSticktoTop] = useState<string>("");
+  useEffect(() => {
+    if (isScrollingUp) {
+      setSticktoTop(" sticky top-0");
+    } 
+    if (isScrollingDown) {
+      setSticktoTop("")
+    }
+  }, [isScrollingY]);
   return (
-    <div className=" z-20">
-      <div className="  p-4  md:px-6 lg:hidden flex justify-between">
+    <div className={`z-50 ${sticktoTop} transition-all ease-linear duration-200`}>
+      <div className="  p-4 bg-white  z-50  md:px-6 lg:hidden flex justify-between">
         <div className=" flex space-x-6">
           <Bars3Icon className=" w-8" />
           <UserIcon className="w-8" />
@@ -80,7 +91,7 @@ function Nav({}: Props) {
           </div>
         </div>
       </div>
-      <div className="   hidden  lg:inline-block w-full p-10    ">
+      <div className="  bg-white  hidden  lg:inline-block w-full p-10    ">
         <div className=" flex justify-between items-center   ">
           <div>
             <Image src={logo} alt="logo" className="  w-20" />
