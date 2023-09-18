@@ -1,5 +1,11 @@
 "use client";
-import { TruckIcon, UserIcon } from "@heroicons/react/24/outline";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  TruckIcon,
+  UserIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import {
   Bars3Icon,
   MagnifyingGlassIcon,
@@ -24,6 +30,7 @@ import iphoneImg from "../assests/banner iphone.jpg";
 import { useEffect, useState } from "react";
 type Props = {};
 function Nav({}: Props) {
+  const [isModalOpen, setisModalOpen] = useState<boolean>(false);
   const watchHover = useRef(null);
   const isHover = useHover(watchHover);
   const accessoriesHover = useRef(null);
@@ -32,19 +39,29 @@ function Nav({}: Props) {
   const isStoresHover = useHover(storeHover);
   const { isScrollingUp, isScrollingDown, isScrollingY } = useScrollDirection();
   const [sticktoTop, setSticktoTop] = useState<string>("");
+
   useEffect(() => {
     if (isScrollingUp) {
       setSticktoTop(" sticky top-0");
-    } 
+    }
     if (isScrollingDown) {
-      setSticktoTop("")
+      setSticktoTop("");
     }
   }, [isScrollingY]);
   return (
-    <div className={`z-50 ${sticktoTop} transition-all ease-linear duration-200`}>
-      <div className="  p-4 bg-white  z-50  md:px-6 lg:hidden flex justify-between">
+    <div
+      className={`z-50 ${sticktoTop}  transition-all ease-linear duration-200`}
+    >
+      {/** NAV BAR FOR SMALL SCREENS */}
+      <div className="  p-4 bg-white  z-50 relative  md:px-6 lg:hidden flex justify-between">
         <div className=" flex space-x-6">
-          <Bars3Icon className=" w-8" />
+          {
+            isModalOpen ? (<XMarkIcon className=" w-8 cursor-pointer"  onClick={() => setisModalOpen(!isModalOpen)}/>) : (<Bars3Icon
+              className=" w-8 cursor-pointer"
+              onClick={() => setisModalOpen(!isModalOpen)}
+            />)
+          }
+          
           <UserIcon className="w-8" />
         </div>
 
@@ -53,6 +70,61 @@ function Nav({}: Props) {
           <MagnifyingGlassIcon className=" w-8" />
           <ShoppingBagIcon className=" w-8" />
         </div>
+
+        {/** MODAL FOR SMALL DEVICES */}
+        <AnimatePresence>
+          {isModalOpen && (
+            <motion.div 
+            initial={{x:-20}}
+            animate={{x:0, transition:{stiffness:300,  type:"spring"}}}
+            transition={{duration:0.3,  ease:"linear"}}
+            exit={{x:-20, opacity:0}}
+            
+            className=" space-y-5 absolute left-0 top-[72px] bg-white w-[80%] md:w-[300px] p-4 ">
+              <div className=" space-y-2">
+                <div className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
+                  <p>Stores</p>
+                  <ChevronRightIcon className=" w-4" />
+                </div>
+                <div className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
+                  <p>Watch</p>
+                  <ChevronRightIcon className=" w-4" />
+                </div>
+                <div className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
+                  <p>Smartphones</p>
+                  <ChevronRightIcon className=" w-4" />
+                </div>
+                <div className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
+                  <p>Laptops</p>
+                  <ChevronRightIcon className=" w-4" />
+                </div>
+                <div className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
+                  <p>Support</p>
+                  <ChevronRightIcon className=" w-4" />
+                </div>
+                <div className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
+                  <p>Stores</p>
+                  <ChevronRightIcon className=" w-4" />
+                </div>
+              </div>
+              <div className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
+                <div className=" flex space-x-3 items-center">
+                  <MicrophoneIcon className="w-6" />
+                  <div>
+                    <p className=" text-[10px] font-light">Customer Support</p>
+                    <p>1-800-123-45-67</p>
+                  </div>
+                </div>
+              </div>
+              <div className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-around">
+                <Image src={facebook} alt="socials" className=" w-8" />
+                <Image src={pinterest} alt="socials" className=" w-8" />
+                <Image src={twitter} alt="socials" className=" w-8" />
+                <Image src={instagram} alt="socials" className=" w-8" />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
       {/*  Nav bar for large Screen */}
       <div className="  p-4 px-10 hidden lg:inline-block text-white text-sm w-full bg-[#262626]">
