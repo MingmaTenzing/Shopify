@@ -1,6 +1,4 @@
-"use client";
 
-import { useEffect, useState } from "react";
 import { fetchLaptops } from "../dummyjson/fetchdata";
 import { Product } from "../types/product-type";
 
@@ -9,17 +7,9 @@ import laptopBanne from "../assests/featured laptops.webp";
 import ProductContainer from "../utils/ProductContainer";
 
 type Props = {};
-function TopLaptops({}: Props) {
-  const [featuredLaptops, setFeaturedLaptops] = useState<Product[]>();
+async function TopLaptops({}: Props) {
+  const featuredLaptops:Product[] = await fetchLaptops();
 
-  useEffect(() => {
-    async function getLaptops() {
-      const data = await fetchLaptops();
-      setFeaturedLaptops(data);
-    }
-    getLaptops();
-  }, []);
-  console.log(featuredLaptops);
 
   return (
     <div className=" space-y-4 md:space-y-0 lg:w-[1200px] m-auto  md:flex md:flex-row-reverse md:justify-center md:items-center">
@@ -60,5 +50,5 @@ function TopLaptops({}: Props) {
       </div>
     </div>
   );
-}
+};
 export default TopLaptops;
