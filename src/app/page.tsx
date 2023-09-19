@@ -1,4 +1,3 @@
-
 import Nav from "../../components/Nav";
 import Header from "../../components/Header";
 import Collections from "../../components/Collections";
@@ -14,10 +13,8 @@ import NewsLetter from "../../components/NewsLetter";
 import Footer from "../../components/Footer";
 
 export default function Home() {
-  
   return (
     <main>
-      <Nav />
       <Header />
       <Collections />
       <Featured />
@@ -29,7 +26,6 @@ export default function Home() {
       <WoodstockNews />
       <Faqs />
       <NewsLetter />
-      <Footer />
     </main>
   );
 }
