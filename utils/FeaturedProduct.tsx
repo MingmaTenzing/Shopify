@@ -8,6 +8,7 @@ import star from "../assests/rating/star.png";
 import halfstar from "../assests/rating/halfstar.png";
 import { BookmarkIcon } from "@heroicons/react/24/solid";
 import { AnimatePresence, motion } from "framer-motion";
+import { EyeIcon } from "@heroicons/react/24/outline";
 function FeaturedProduct({
   rating,
   thumbnail,
@@ -17,7 +18,7 @@ function FeaturedProduct({
 }: Product) {
   const [favItems, setFavItems] = useState<boolean>(false);
   return (
-    <div className=" bg-white group  relative transition-all ease-linear  lg:hover:scale-105  z-0 hover:z-50  lg:hover:shadow-2xl lg:hover:rounded-lg lg:hover:border-none w-[320px] md:w-[240px]  md:min-w-[240px] lg:min-w-[280px] p-6 space-y-2  border  ">
+    <div className=" bg-white group  cursor-pointer relative transition-all ease-linear  lg:hover:scale-105  z-0 hover:z-50  lg:hover:shadow-2xl lg:hover:rounded-lg lg:hover:border-none w-[320px] md:w-[240px]  md:min-w-[240px] lg:min-w-[280px] p-6 space-y-2  border  ">
       <div className=" relative ">
         <Image
           src={thumbnail}
@@ -26,6 +27,8 @@ function FeaturedProduct({
           height={200}
           className=" w-[240px] h-[200px] object-cover  object-center rounded-lg"
         />
+        <EyeIcon className=" hidden   lg:group-hover:flex  transition-all ease-linear dura w-10 cursor-pointer text-gray-500 bg-white p-2 rounded-lg  opacity-50 absolute hover:opacity-100  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+
         <p className=" mt-4 font-bold text-md line-clamp-1">{title}</p>
       </div>
       <div className=" flex">
