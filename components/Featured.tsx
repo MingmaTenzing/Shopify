@@ -13,18 +13,7 @@ async function Featured({}: Props) {
       <div className="mt-4 lg:mt-8 flex flex-col  md:flex-row   items-center   overflow-x-scroll  scrollbar-hide  ">
         {smartphones?.slice(0, 5).map((device) => (
           <FeaturedProduct
-            id={device.id}
-            description={device.description}
-            stock={device.stock}
-            brand={device.brand}
-            category={device.category}
-            images={device.images}
-            key={device.id}
-            rating={device.rating}
-            thumbnail={device.thumbnail}
-            title={device.title}
-            price={device.price}
-            discountPercentage={device.discountPercentage}
+           product={device}
           />
         ))}
       </div>
