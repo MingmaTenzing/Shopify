@@ -27,7 +27,7 @@ function ProductContainer({ product }: Props) {
           height={200}
           className=" w-[240px] h-[200px] object-cover  object-center rounded-lg"
         />
-        <p className=" mt-4 font-bold text-md ">{product.title}</p>
+        <p className=" mt-4 font-bold text-md line-clamp-2 ">{product.title}</p>
       </div>
       <div className=" flex">
         {new Array(Math.floor(product.rating)).fill(0).map((_, index) => (
