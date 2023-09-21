@@ -23,79 +23,79 @@ function BrandsCarousel({}: Props) {
           loading="eager"
           src={apple}
           alt="Brand logo"
-          className=" min-w-[100px]   grayscale aspect-3/2  object-contain"
+          className=" min-w-[100px]    aspect-3/2   grayscale object-contain"
         />
         <Image
           loading="eager"
           src={asus}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={dell}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={fila}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={gucci}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={adidas}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={lenovo}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={msi}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={levi}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={nike}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={puma}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={northface}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={sony}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
       </div>
       <div className=" flex space-x-10  items-center flex-nowrap animate-infinite-slider">
@@ -103,79 +103,79 @@ function BrandsCarousel({}: Props) {
           loading="eager"
           src={apple}
           alt="Brand logo"
-          className=" min-w-[100px]   grayscale aspect-3/2  object-contain"
+          className=" min-w-[100px]    aspect-3/2   grayscale object-contain"
         />
         <Image
           loading="eager"
           src={asus}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={dell}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={fila}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={gucci}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={adidas}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={lenovo}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={msi}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={levi}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={nike}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={puma}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={northface}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
         <Image
           loading="eager"
           src={sony}
           alt="Brand logo"
-          className="  min-w-[100px]   grayscale aspect-3/2  object-contain "
+          className="  min-w-[100px]    aspect-3/2   grayscale object-contain "
         />
       </div>
     </div>

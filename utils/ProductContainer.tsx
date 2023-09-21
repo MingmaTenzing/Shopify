@@ -9,6 +9,7 @@ import halfstar from "../assests/rating/halfstar.png";
 import { BookmarkIcon } from "@heroicons/react/24/solid";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import ts from "typescript";
+import { useRouter } from "next/navigation";
 
 
 interface Props {
@@ -17,8 +18,9 @@ interface Props {
 
 function ProductContainer({ product }: Props) {
   const [favItems, setFavItems] = useState<boolean>(false);
+  const router = useRouter();
   return (
-    <div className=" bg-white group z-0 hover:z-50 relative transition-all ease-linear  lg:hover:scale-105  lg:hover:shadow-lg lg:hover:rounded-lg lg:hover:border-none w-[178px] md:w-[220px] space-y-2   p-6  border h-[450px]  ">
+    <div onClick={() => router.push(`/product/${product.id}`)} className="  cursor-pointer bg-white group z-0 hover:z-50 relative transition-all ease-linear  lg:hover:scale-105  lg:hover:shadow-lg lg:hover:rounded-lg lg:hover:border-none w-[178px] md:w-[220px] space-y-2   p-6  border h-[450px]  ">
       <div className=" relative ">
         <Image
           src={product.thumbnail}

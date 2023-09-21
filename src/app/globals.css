@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.swiper-button-prev {
+    color: red; 
+}
+
+.swiper-button-next {
+    color: #000; 
+}
