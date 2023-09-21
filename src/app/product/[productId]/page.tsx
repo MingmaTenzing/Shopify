@@ -54,7 +54,7 @@ function ProductInfo({}: Props) {
               height={300}
               alt="product Image"
               width={300}
-              className=" rounded-lg w-full h-[400px] md:h-[500px]  object-contain"
+              className=" rounded-lg w-full h-[400px] md:h-[500px] md:object-contain  object-cover"
             />{" "}
           </SwiperSlide>
         ))}
