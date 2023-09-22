@@ -23,6 +23,7 @@ import Collections from "../../../../components/Collections";
 import Faqs from "../../../../components/Faqs";
 import TopLaptops from "../../../../components/TopLaptops";
 import ProductCategories from "../../../../components/ProductCategories";
+import ProductLoadingSkeleton from "../../../../components/Product-Loading-Skeleton";
 type Props = {};
 
 function ProductInfo({}: Props) {
@@ -38,6 +39,8 @@ function ProductInfo({}: Props) {
   console.log(productInfo);
 
   return (
+    <>
+
     <div className=" bg-[#fafafa]">
 
     <div className=" md:pt-10 p-4 md:flex md:space-x-6  md:justify-center md:item md:h-[60vh] lg:h-[90vh] lg:w-[1200px] lg:m-auto ">
@@ -106,11 +109,9 @@ function ProductInfo({}: Props) {
       
       </div>
     </div>
-<Collections />
-<ProductCategories />
 
-<Faqs />
     </div>
+    </>
   );
 }
 export default ProductInfo;

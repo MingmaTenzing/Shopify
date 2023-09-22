@@ -6,11 +6,13 @@ import Image from "next/image";
 import NumberofItems from "./Number-of-Items";
 import AddtoCart from "./AddToCart-Button";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/navigation";
 
 type Props = {
   productInfo: Product;
 };
 function Recommended({ productInfo }: Props) {
+  const router = useRouter();
   const [products, setProducts] = useState<Product[]>();
   useEffect(() => {
     async function getProducts() {
@@ -29,7 +31,7 @@ function Recommended({ productInfo }: Props) {
         {products
           ?.filter((product) => product.id !== productInfo.id)
           .map((product) => (
-            <div className=" flex space-x-6  items-center">
+            <div onClick={() =>  router.push(`/product/${product.id}`)} className=" cursor-pointer flex space-x-6  items-center">
               <div>
                 <Image
                   src={product.thumbnail}

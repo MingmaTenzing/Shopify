@@ -21,10 +21,10 @@ function Category() {
     }
     fetchitems();
   }, []);
+  
 
   return (
     <div>
-      <ProductsHeader params={params} />
    
 
       {/** PRODUCTS */}
