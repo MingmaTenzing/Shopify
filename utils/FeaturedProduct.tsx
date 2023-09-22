@@ -9,15 +9,18 @@ import halfstar from "../assests/rating/halfstar.png";
 import { BookmarkIcon } from "@heroicons/react/24/solid";
 import { AnimatePresence, motion } from "framer-motion";
 import { EyeIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/navigation";
 interface Props {
   product: Product;
 }
 function FeaturedProduct(
   { product }: Props) {
   const [favItems, setFavItems] = useState<boolean>(false);
+  const router = useRouter();
+
   return (
-    <div className=" bg-white group  cursor-pointer relative transition-all ease-linear  lg:hover:scale-105  z-0 hover:z-50  lg:hover:shadow-2xl lg:hover:rounded-lg lg:hover:border-none w-[320px] md:w-[240px]  md:min-w-[240px] lg:min-w-[280px] p-6 space-y-2  border  ">
-      <div className=" relative ">
+    <div onClick={() => router.push(`/product/${product.id}`)} className=" bg-white group  cursor-pointer relative transition-all ease-linear  lg:hover:scale-105  z-0 hover:z-50  lg:hover:shadow-2xl lg:hover:rounded-lg lg:hover:border-none w-[320px] md:w-[240px]  md:min-w-[240px] lg:min-w-[280px] p-6 space-y-2  border  ">
+      <div className=" cursor-pointer relative ">
         <Image
           src={product.thumbnail}
           alt="product image"
