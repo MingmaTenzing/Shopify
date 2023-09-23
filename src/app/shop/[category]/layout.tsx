@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import ProductsHeader from "../../../../components/ProductsHeader";
+import axios from "axios";
 
 export async function generateMetadata({ params }: Props) {
  
@@ -8,6 +9,8 @@ export async function generateMetadata({ params }: Props) {
       description: 'WoodStock your all in one  e-commerce platform'
     };
   }
+
+  
 type Props = {
     children: React.ReactNode;
     params: {category: string};
