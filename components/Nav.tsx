@@ -28,6 +28,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import iphoneImg from "../assests/banner iphone.jpg";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 type Props = {};
 function Nav({}: Props) {
   const [isModalOpen, setisModalOpen] = useState<boolean>(false);
@@ -39,6 +41,7 @@ function Nav({}: Props) {
   const isStoresHover = useHover(storeHover);
   const { isScrollingUp, isScrollingDown, isScrollingY } = useScrollDirection();
   const [sticktoTop, setSticktoTop] = useState<string>("");
+  const router = useRouter();
 
   useEffect(() => {
     if (isScrollingUp) {
@@ -65,7 +68,7 @@ function Nav({}: Props) {
           <UserIcon className="w-8" />
         </div>
 
-        <Image src={logo} alt="logo" className=" w-20" />
+        <Image src={logo} alt="logo" onClick={() => router.push("/")} className=" cursor-pointer w-20" />
         <div className=" flex space-x-6">
           <MagnifyingGlassIcon className=" w-8" />
           <ShoppingBagIcon className=" w-8" />
@@ -81,31 +84,44 @@ function Nav({}: Props) {
             exit={{x:-20, opacity:0}}
             
             className=" space-y-5 absolute left-0 top-[72px] bg-white w-[80%] md:w-[300px] p-4 ">
-              <div className=" space-y-2">
-                <div className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
-                  <p>Stores</p>
+              <div className=" flex  flex-col space-y-2">
+                <Link href="/shop/allproducts" >
+                
+                <div onClick={() => setisModalOpen(false)} className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
+                  <p>All Products</p>
                   <ChevronRightIcon className=" w-4" />
                 </div>
-                <div className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
+                </Link>
+                <Link href="/shop/mens-watches">
+                <div onClick={() => setisModalOpen(false)} className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
                   <p>Watch</p>
                   <ChevronRightIcon className=" w-4" />
                 </div>
-                <div className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
+                </Link>
+                <Link href="/shop/smartphones">
+                <div onClick={() => setisModalOpen(false)} className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
                   <p>Smartphones</p>
                   <ChevronRightIcon className=" w-4" />
                 </div>
-                <div className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
+                </Link>
+                <Link href="/shop/laptops">
+                <div onClick={() => setisModalOpen(false)} className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
                   <p>Laptops</p>
                   <ChevronRightIcon className=" w-4" />
                 </div>
-                <div className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
-                  <p>Support</p>
+                </Link>
+                <Link href="/shop/automotive">
+                <div  onClick={() => setisModalOpen(false)} className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
+                  <p>Accessories</p>
                   <ChevronRightIcon className=" w-4" />
                 </div>
-                <div className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
-                  <p>Stores</p>
+                </Link>
+                <Link href="/shop/skincare">
+                <div  onClick={() => setisModalOpen(false)} className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
+                  <p>Skincare</p>
                   <ChevronRightIcon className=" w-4" />
                 </div>
+                </Link>
               </div>
               <div className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
                 <div className=" flex space-x-3 items-center">
@@ -166,7 +182,7 @@ function Nav({}: Props) {
       <div className="  bg-white  hidden  lg:inline-block w-full p-10    ">
         <div className=" flex justify-between items-center   ">
           <div>
-            <Image src={logo} alt="logo" className="  w-20" />
+            <Image src={logo} alt="logo" onClick={() => router.push("/")} className="  cursor-pointer w-20" />
           </div>
           <div className=" flex  space-x-4">
             <div className=" flex w-[400px] h-[70px] bg-slate-100 p-4 rounded-lg">
