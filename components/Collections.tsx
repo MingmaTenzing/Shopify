@@ -14,7 +14,7 @@ function Collections({}: Props) {
       {/** Collections Containers */}
       <div className=" flex    scrollbar-hide overflow-x-scroll space-x-4  ">
        <Link href="/shop/womens-watches">
-        <div className="  overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] relative ">
+        <div className="  overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] lg:w-[280px] relative ">
           <Image
             src={watch}
             alt="watch collections"
@@ -29,7 +29,7 @@ function Collections({}: Props) {
         </div>
        </Link>
        <Link href="/shop/laptops">
-        <div className=" overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] relative ">
+        <div className=" overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] lg:w-[280px] relative ">
           <Image
             src={laptop}
             alt="laptop collections"
@@ -44,7 +44,7 @@ function Collections({}: Props) {
         </div>
        </Link>
        <Link href="/shop/smartphones">
-        <div className=" overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] relative ">
+        <div className=" overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] lg:w-[280px] relative ">
           <Image
             src={phone}
             alt="phone collections"
@@ -57,7 +57,7 @@ function Collections({}: Props) {
         </div>
        </Link>
        <Link href="/shop/womens-dresses">
-        <div className=" overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] relative ">
+        <div className=" overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] lg:w-[280px] relative ">
           <Image
             src={clothing}
             alt="clothing collections"
