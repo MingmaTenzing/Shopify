@@ -4,6 +4,7 @@ import laptop from "../assests/collections/laptop.jpg";
 import clothing from "../assests/collections/clothing.jpg";
 import phone from "../assests/collections/iphone.jpg";
 import TitleSection from "../utils/TitleSection";
+import Link from "next/link";
 type Props = {};
 function Collections({}: Props) {
   return (
@@ -11,8 +12,9 @@ function Collections({}: Props) {
       <TitleSection title="Collections" />
 
       {/** Collections Containers */}
-      <div className=" flex lg:justify-center    scrollbar-hide overflow-x-scroll space-x-4 lg:space-x-6  ">
-        <div className="  overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] relative ">
+      <div className=" flex    scrollbar-hide overflow-x-scroll space-x-4  ">
+       <Link href="/shop/womens-watches">
+        <div className="  overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] lg:w-[280px] relative ">
           <Image
             src={watch}
             alt="watch collections"
@@ -25,7 +27,9 @@ function Collections({}: Props) {
             <p className=" text-white  text-sm ">20 products</p>
           </div>
         </div>
-        <div className=" overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] relative ">
+       </Link>
+       <Link href="/shop/laptops">
+        <div className=" overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] lg:w-[280px] relative ">
           <Image
             src={laptop}
             alt="laptop collections"
@@ -38,7 +42,9 @@ function Collections({}: Props) {
             <p className=" text-white  text-sm ">8 products</p>
           </div>
         </div>
-        <div className=" overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] relative ">
+       </Link>
+       <Link href="/shop/smartphones">
+        <div className=" overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] lg:w-[280px] relative ">
           <Image
             src={phone}
             alt="phone collections"
@@ -49,7 +55,9 @@ function Collections({}: Props) {
             <p className=" text-white  text-sm ">10 products</p>
           </div>
         </div>
-        <div className=" overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] relative ">
+       </Link>
+       <Link href="/shop/womens-dresses">
+        <div className=" overflow-hidden rounded-lg cursor-pointer group h-[340px]  md:h-[300px]   min-w-[320px] md:min-w-0 md:w-[310px] lg:w-[280px] relative ">
           <Image
             src={clothing}
             alt="clothing collections"
@@ -60,6 +68,7 @@ function Collections({}: Props) {
             <p className=" text-white  text-sm ">17 products</p>
           </div>
         </div>
+       </Link>
       </div>
     </div>
   );
