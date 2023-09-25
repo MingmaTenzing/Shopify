@@ -2,13 +2,21 @@ import Image from "next/image";
 import test from "../../../assests/test1.webp";
 import NumberofItems from "../../../utils/Number-of-Items";
 import { TrashIcon } from "@heroicons/react/24/outline";
+import CartItem from "../../../components/CartItem";
+import { PlayIcon } from "@heroicons/react/24/solid";
+import CheckoutContainer from "../../../components/CheckoutContainer";
+import NewsLetter from "../../../components/NewsLetter";
+import WoodstockNews from "../../../components/WoodstockNews";
+import { fetchMensShirts } from "../../../dummyjson/fetch-mens-shirts";
+import { Product } from "../../../types/product-type";
 
 type Props = {};
 
-function YourCart({}: Props) {
+async function YourCart({}: Props) {
+  const data:Product[] = await fetchMensShirts();
   return (
     <div>
-      <div className=" bg-[#fafafa]   p-10 space-y-2 ">
+      <div className=" bg-[#f8f8f8]   p-10 space-y-2 ">
         <div className=" flex  space-x-2">
           <p className=" text-sm text-gray-500">Home</p>
           <p className=" text-sm text-gray-500">-</p>
@@ -19,34 +27,28 @@ function YourCart({}: Props) {
         </div>
       </div>
 
-      <section id="cart items section">
+      <div className=" md:flex md:justify-center md:space-x-10 mt-10">
 
-      <div className=" hidden md:flex p-4   justify-between list-none">
-        <li>Product</li>
-        <li>Quantity </li>
-        <li>Total </li>
-      </div>
-      <div className=" p-4 flex justify-between">
-        <div className=" flex space-x-3">
-          <Image
-            src={test}
-            alt=" product image"
-            className=" bg-[#fafafa] w-24 object-cover"
-          />
-          <div className=" space-y-2">
-            <p className=" text-[12px]">Woodstock category</p>
-            <p className=" font-semibold">Watch Version 17</p>
-            <p className=" text-gray-500">Stock - 12</p>
-            <p>$200</p>
-          </div>
-        </div>
-        <div className="  flex flex-col items-end justify-between ">
-          <NumberofItems />
-          <TrashIcon className=" w-6 cursor-pointer  hover:text-red-500" />
-        </div>
-      </div>
+      <section id="cart items  section" className=" md:w-[50%]">
+    
+       
+        {/** CART ITEMs */}
+       {
+        data?.map((product) => <CartItem product={product} key={product.id} />)
+       }
       </section>
+      <div className=" md:w-[40%]">
+      <CheckoutContainer />
 
+      </div>
+  
+      </div>
+      
+      <div className=" pt-10">
+
+      <NewsLetter />
+      </div>
+      
     </div>
   );
 }
