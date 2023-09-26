@@ -35,6 +35,7 @@ import CartModal from "./CartModal";
 type Props = {};
 function Nav({}: Props) {
   const [isModalOpen, setisModalOpen] = useState<boolean>(false);
+  const [isCartModalOpen, setisCartModalOpen] = useState<boolean>(false);
   const watchHover = useRef(null);
   const isHover = useHover(watchHover);
   const accessoriesHover = useRef(null);
@@ -83,7 +84,7 @@ function Nav({}: Props) {
         />
         <div className=" flex space-x-6">
           <MagnifyingGlassIcon className=" w-8" />
-          <ShoppingBagIcon className=" w-8" />
+          <ShoppingBagIcon onClick={() => setisCartModalOpen(!isCartModalOpen)} className=" w-8" />
         </div>
 
         {/** MODAL FOR SMALL DEVICES */}
@@ -205,7 +206,7 @@ function Nav({}: Props) {
             <div className=" flex space-x-6">
               <UserIcon className=" w-10" />
               <div className=" flex space-x-2 items-center">
-                <ShoppingBagIcon className=" w-10" />
+                <ShoppingBagIcon onClick={() => setisCartModalOpen(!isCartModalOpen)} className=" w-10" />
                 <div>
                   <p className=" text-sm text-gray-400">Subtotal</p>
                   <p className=" font-bold">$100</p>
