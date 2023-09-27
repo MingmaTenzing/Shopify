@@ -10,16 +10,19 @@ import Image from "next/image";
 import test from "../assests/test1.webp";
 import NumberofItems from "../utils/Number-of-Items";
 import CartModalItem from "./small components/Cart-Modal-Item";
+import { useAppDispatch } from "../redux/hooks";
+import { changeCartModalState } from "../redux/slices/CartModal";
 
 type Props = {};
 function CartModal({}: Props) {
+  const dispatch = useAppDispatch();
   return (
     <div className=" h-[100vh]   w-[340px] drop-shadow-2xl">
 
     <div className="  z-100 bg-[white] p-4 overflow-y-scroll scrollbar-hide ">
       <div className=" bg-white flex  justify-between  border-b-2 pb-2">
         <p className=" text-xl font-semibold">Your Cart</p>
-        <XMarkIcon className=" w-6" />
+        <XMarkIcon onClick={() => dispatch(changeCartModalState())} className=" w-6" />
       </div>
       <div className=" bg-white max-h-[60vh] w-full overflow-y-scroll scrollbar-hide">
         <CartModalItem />
