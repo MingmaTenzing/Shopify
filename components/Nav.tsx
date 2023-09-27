@@ -32,10 +32,12 @@ import Link from "next/link";
 import StoreHover from "./small components/StoreHover";
 import NavTopSection from "./small components/Nav-top-section";
 import CartModal from "./CartModal";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { changeCartModalState } from "../redux/slices/CartModal";
+
 type Props = {};
 function Nav({}: Props) {
   const [isModalOpen, setisModalOpen] = useState<boolean>(false);
-  const [isCartModalOpen, setisCartModalOpen] = useState<boolean>(false);
   const watchHover = useRef(null);
   const isHover = useHover(watchHover);
   const accessoriesHover = useRef(null);
@@ -46,6 +48,10 @@ function Nav({}: Props) {
   const [sticktoTop, setSticktoTop] = useState<string>("");
   const router = useRouter();
 
+  const iscartModalOpen = useAppSelector((state) => state.cartModal.value);
+  console.log(iscartModalOpen);
+
+  const dispatch = useAppDispatch();
   useEffect(() => {
     if (isScrollingUp) {
       setSticktoTop(" sticky top-0");
@@ -56,7 +62,7 @@ function Nav({}: Props) {
   }, [isScrollingY]);
   return (
     <div
-      className={`z-50 ${sticktoTop}  transition-all ease-linear duration-200 relative` }
+      className={`z-50 ${sticktoTop}  transition-all ease-linear duration-200 relative`}
     >
       {/** NAV BAR FOR SMALL SCREENS */}
       <div className="  p-4 bg-white  z-50 relative  md:px-6 lg:hidden flex justify-between">
@@ -84,7 +90,7 @@ function Nav({}: Props) {
         />
         <div className=" flex space-x-6">
           <MagnifyingGlassIcon className=" w-8" />
-          <ShoppingBagIcon onClick={() => setisCartModalOpen(!isCartModalOpen)} className=" w-8" />
+          <ShoppingBagIcon onClick={() => dispatch(changeCartModalState())} className=" w-8" />
         </div>
 
         {/** MODAL FOR SMALL DEVICES */}
@@ -205,8 +211,9 @@ function Nav({}: Props) {
             </div>
             <div className=" flex space-x-6">
               <UserIcon className=" w-10" />
-              <div className=" flex space-x-2 items-center">
-                <ShoppingBagIcon onClick={() => setisCartModalOpen(!isCartModalOpen)} className=" w-10" />
+              <div onClick={() => dispatch(changeCartModalState())} className=" flex space-x-2 cursor-pointer items-center">
+                <ShoppingBagIcon className=" w-10" />
+
                 <div>
                   <p className=" text-sm text-gray-400">Subtotal</p>
                   <p className=" font-bold">$100</p>
@@ -333,8 +340,18 @@ function Nav({}: Props) {
         </div>
       </div>
       <div className=" absolute top-0 right-0 z-50">
-      <CartModal />
+        <AnimatePresence>
+        {iscartModalOpen && 
+        <motion.div 
+        initial={{x:10, opacity:0}}
+        animate={{x:0, opacity:1, transition:{duration:0.2, type:"spring"}}}
+        exit={{x:10, opacity:0}}>
 
+          <CartModal />
+        </motion.div>
+        }
+
+        </AnimatePresence>
       </div>
     </div>
   );

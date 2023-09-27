@@ -5,6 +5,7 @@ import { Product } from "../types/product-type";
 import Image from "next/image";
 import laptopBanne from "../assests/featured laptops.webp";
 import ProductContainer from "../utils/ProductContainer";
+import { useAppDispatch } from "../redux/hooks";
 
 type Props = {};
 async function TopLaptops({}: Props) {
