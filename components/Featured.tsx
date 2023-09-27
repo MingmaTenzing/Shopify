@@ -13,6 +13,7 @@ async function Featured({}: Props) {
       <div className="mt-4 lg:mt-8 flex flex-col  md:flex-row   items-center   overflow-x-scroll  scrollbar-hide  ">
         {smartphones?.slice(0, 5).map((device) => (
           <FeaturedProduct
+          key={device.id}
            product={device}
           />
         ))}

@@ -7,6 +7,7 @@ import {  applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import cartModalReducer from "./slices/CartModal";
 import  counterSlice  from "./slices/CartModal copy";
+import  CartItemSlice  from "./slices/CartItems";
 
 const persistConfig ={ 
     key: "root",
@@ -14,7 +15,8 @@ const persistConfig ={
 }
 const reducers = combineReducers({
    cartModal: cartModalReducer,
-    counter: counterSlice
+    counter: counterSlice,
+    cart: CartItemSlice
 })
 
 const persistedReducer = persistReducer(persistConfig, reducers,)

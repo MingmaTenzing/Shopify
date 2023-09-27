@@ -48,7 +48,7 @@ function Nav({}: Props) {
   const [sticktoTop, setSticktoTop] = useState<string>("");
   const router = useRouter();
 
-  const iscartModalOpen = useAppSelector((state) => state.cartModal.values);
+  const iscartModalOpen = useAppSelector((state) => state.cartModal.value);
   console.log(iscartModalOpen);
 
   const dispatch = useAppDispatch();
