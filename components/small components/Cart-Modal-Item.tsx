@@ -28,10 +28,10 @@ function CartModalItem({cartItem}: Props) {
          {cartItem.title}
         </h4>
         <span className=" text-[12px]   text-gray-400">Stock: {cartItem.stock}</span>
-        <span className="">{cartItem.price}</span>
+        <span className="">${cartItem.price}</span>
       </div>
       <div className=" flex flex-col items-end space-y-3">
-        <NumberofItems />
+        <NumberofItems product={cartItem}/>
         <TrashIcon onClick={() => dispatch(deletefromCart(cartItem))} className=" w-5" />
       </div>
     </div>

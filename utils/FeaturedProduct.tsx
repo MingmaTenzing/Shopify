@@ -22,8 +22,8 @@ function FeaturedProduct(
   const router = useRouter();
 
   return (
-    <div onClick={() => router.push(`/product/${product.id}`)} className=" bg-white group  cursor-pointer relative transition-all ease-linear  lg:hover:scale-105  z-0 hover:z-50  lg:hover:shadow-2xl lg:hover:rounded-lg lg:hover:border-none w-[320px] md:w-[240px]  md:min-w-[240px] lg:min-w-[280px] p-6 space-y-2  border  ">
-      <div className=" cursor-pointer relative ">
+    <div  className=" bg-white group  cursor-pointer relative transition-all ease-linear  lg:hover:scale-105  z-0 hover:z-50  lg:hover:shadow-2xl lg:hover:rounded-lg lg:hover:border-none w-[320px] md:w-[240px]  md:min-w-[240px] lg:min-w-[280px] p-6 space-y-2  border  ">
+      <div onClick={() => router.push(`/product/${product.id}`)} className=" cursor-pointer relative ">
         <Image
           src={product.thumbnail}
           alt="product image"

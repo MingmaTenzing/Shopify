@@ -3,11 +3,15 @@ import NumberofItems from "../utils/Number-of-Items"
 import { TrashIcon } from "@heroicons/react/24/outline"
 import test from "@/../assests/test1.webp"
 import { Product } from "../types/product-type"
+import { CartItem } from "../types/cartItem-type"
+import { useDispatch } from "react-redux"
+import { deletefromCart } from "../redux/slices/CartItems"
 
 type Props = {
-  product:Product
+  product:CartItem
 }
 export default function CartItem({product}: Props) {
+  const dispatch = useDispatch();
   return (
     <div className=" hover:bg-gray-100"> <div className=" p-4 flex items-center justify-between">
     <div className=" flex space-x-3 md:w-[250px]">
@@ -26,15 +30,15 @@ export default function CartItem({product}: Props) {
       </div>
     </div>
     <div className=" hidden lg:flex">
-      <NumberofItems />
+      <NumberofItems product={product} />
     </div>
-    <div className=" hidden lg:flex font-semibold">$790</div>
+    <div className=" hidden lg:flex font-semibold">${product.price * product.quantity}</div>
     <div className=" hidden lg:flex">
-      <TrashIcon className=" w-6  cursor-pointer" />
+      <TrashIcon onClick={() => dispatch(deletefromCart(product))} className=" w-6  cursor-pointer" />
     </div>
     <div className=" lg:hidden  flex flex-col items-end space-y-4 justify-between ">
-      <NumberofItems />
-      <TrashIcon className=" w-6 cursor-pointer " />
+      <NumberofItems product={product} />
+      <TrashIcon onClick={() => dispatch(deletefromCart(product))} className=" w-6 cursor-pointer " />
     </div>
   </div></div>
   )

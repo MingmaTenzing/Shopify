@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import { Product } from "../types/product-type";
 import {
   CheckIcon,
@@ -8,13 +8,15 @@ import {
 } from "@heroicons/react/24/outline";
 import NumberofItems from "./Number-of-Items";
 import AddtoCart from "./AddToCart-Button";
-import { useAppDispatch } from "../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { addToCart } from "../redux/slices/CartItems";
+import ViewCartButton from "./ViewCartButton";
 
 type Props = {
   productInfo: Product;
 };
 function ProductDescription({ productInfo }: Props) {
+  const itemsinCart = useAppSelector((state) => state.cart.cart)
   const dispatch = useAppDispatch();
   return (
     <div className=" space-y-6 bg-white rounded-lg p-4">
@@ -33,12 +35,19 @@ function ProductDescription({ productInfo }: Props) {
         <p>{productInfo?.description}</p>
       </div>
       <div className=" flex items-center space-x-3">
-        <NumberofItems />
+      {/**   <NumberofItems number={productInfo.quantity} /> */}
 
-        <div onClick={() => dispatch(addToCart(productInfo))}>
+{
+  itemsinCart.find((item) => item.id == productInfo.id) ? ( <div>
+<ViewCartButton />
+
+</div>):( <div onClick={() => dispatch(addToCart(productInfo))}>
             <AddtoCart />
         
-        </div>
+        </div>)
+  
+}
+       
       </div>
 
       {/** PICKUP AVAILABLE */}
