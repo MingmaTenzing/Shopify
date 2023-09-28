@@ -38,6 +38,7 @@ import { changeCartModalState } from "../redux/slices/CartModal";
 type Props = {};
 function Nav({}: Props) {
   const [isModalOpen, setisModalOpen] = useState<boolean>(false);
+
   const watchHover = useRef(null);
   const isHover = useHover(watchHover);
   const accessoriesHover = useRef(null);
@@ -49,7 +50,11 @@ function Nav({}: Props) {
   const router = useRouter();
 
   const iscartModalOpen = useAppSelector((state) => state.cartModal.value);
-  console.log(iscartModalOpen);
+  const cartItems = useAppSelector((state) => state.cart.cart);
+  const subTotal = cartItems.reduce(
+    (sum, { price, quantity }) => sum + price * quantity,
+    0
+  );
 
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -90,7 +95,12 @@ function Nav({}: Props) {
         />
         <div className=" flex space-x-6">
           <MagnifyingGlassIcon className=" w-8" />
-          <ShoppingBagIcon onClick={() => dispatch(changeCartModalState())} className=" w-8" />
+          <div onClick={() => dispatch(changeCartModalState())} className=" relative">
+                <ShoppingBagIcon className=" w-8" />
+                <span className=" absolute top-0 -right-1 bg-red-500  w-6  text-center text-white rounded-full">{cartItems.length}</span>
+
+                </div>
+
         </div>
 
         {/** MODAL FOR SMALL DEVICES */}
@@ -211,12 +221,19 @@ function Nav({}: Props) {
             </div>
             <div className=" flex space-x-6">
               <UserIcon className=" w-10" />
-              <div onClick={() => dispatch(changeCartModalState())} className=" flex space-x-2 cursor-pointer items-center">
+              <div
+                onClick={() => dispatch(changeCartModalState())}
+                className=" flex space-x-3 cursor-pointer items-center"
+              >
+                <div className=" relative">
                 <ShoppingBagIcon className=" w-10" />
+                <span className=" absolute top-0 -right-1 bg-red-500  w-6  text-center text-white rounded-full">{cartItems.length}</span>
+
+                </div>
 
                 <div>
                   <p className=" text-sm text-gray-400">Subtotal</p>
-                  <p className=" font-bold">$100</p>
+                  <p className=" font-bold">${subTotal}</p>
                 </div>
               </div>
             </div>
@@ -341,16 +358,19 @@ function Nav({}: Props) {
       </div>
       <div className=" absolute top-0 right-0 z-50">
         <AnimatePresence>
-        {iscartModalOpen && 
-        <motion.div 
-        initial={{x:10, opacity:0}}
-        animate={{x:0, opacity:1, transition:{duration:0.2, type:"spring"}}}
-        exit={{x:10, opacity:0}}>
-
-          <CartModal />
-        </motion.div>
-        }
-
+          {iscartModalOpen && (
+            <motion.div
+              initial={{ x: 10, opacity: 0 }}
+              animate={{
+                x: 0,
+                opacity: 1,
+                transition: { duration: 0.2, type: "spring" },
+              }}
+              exit={{ x: 10, opacity: 0 }}
+            >
+              <CartModal />
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
     </div>

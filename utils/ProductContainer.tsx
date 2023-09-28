@@ -10,6 +10,8 @@ import { BookmarkIcon } from "@heroicons/react/24/solid";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import ts from "typescript";
 import { useRouter } from "next/navigation";
+import { useAppDispatch } from "../redux/hooks";
+import { addToCart } from "../redux/slices/CartItems";
 
 
 interface Props {
@@ -17,12 +19,13 @@ interface Props {
 }
 
 function ProductContainer({ product }: Props) {
+  const dispatch = useAppDispatch();
   const [favItems, setFavItems] = useState<boolean>(false);
   const router = useRouter();
   return (
-    <div onClick={() => router.push(`/product/${product.id}`)} className="  cursor-pointer bg-white group z-0 hover:z-50 relative transition-all ease-linear  lg:hover:scale-105  lg:hover:shadow-lg lg:hover:rounded-lg lg:hover:border-none w-[178px] md:w-[220px] space-y-2   p-6  border h-[450px]  ">
-      <div className=" relative ">
-        <Image
+    <div  className="  cursor-pointer bg-white group z-0 hover:z-50 relative transition-all ease-linear  lg:hover:scale-105  lg:hover:shadow-lg lg:hover:rounded-lg lg:hover:border-none w-[178px] md:w-[220px] space-y-2   p-6  border h-[450px]  ">
+      <div onClick={() => router.push(`/product/${product.id}`)} className=" relative ">
+        <Image 
           src={product.thumbnail}
           alt="product image"
           width={260}
@@ -53,7 +56,7 @@ function ProductContainer({ product }: Props) {
 
       <div className="      pt-4 flex items-center  justify-between">
         <div className=" w-[50px] h-[40px] flex justify-center group/cart hover:bg-white bg-blue-500 border transition-all ease-linear duration-200 border-blue-500 rounded-lg  ">
-          <ShoppingBagIcon className=" w-6  text-white  group-hover/cart:text-blue-500 transition-all ease-linear duration-200" />
+          <ShoppingBagIcon onClick={()=> dispatch(addToCart(product))} className=" w-6  text-white  group-hover/cart:text-blue-500 transition-all ease-linear duration-200" />
         </div>
         {favItems ? (
           <BookmarkIcon

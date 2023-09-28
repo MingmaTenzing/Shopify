@@ -16,7 +16,7 @@ const persistConfig ={
 const reducers = combineReducers({
    cartModal: cartModalReducer,
     counter: counterSlice,
-    cart: CartItemSlice
+    cart: CartItemSlice,
 })
 
 const persistedReducer = persistReducer(persistConfig, reducers,)

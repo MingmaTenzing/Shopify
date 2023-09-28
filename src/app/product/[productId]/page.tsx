@@ -16,10 +16,13 @@ import Rating from "../../../../utils/Rating";
 import ProductDescription from "../../../../utils/ProductDescription";
 import AvailableStock from "../../../../utils/AvailableStock";
 import Recommended from "../../../../utils/Recommended";
+import { useAppSelector } from "../../../../redux/hooks";
+import { Stalemate } from "next/font/google";
 
 type Props = {};
 
 function ProductInfo({}: Props) {
+  const itemsinCart = useAppSelector((state) => state.cart.cart)
   const [productInfo, setProductInfo] = useState<Product>();
   const productId = useParams().productId;
   useEffect(() => {

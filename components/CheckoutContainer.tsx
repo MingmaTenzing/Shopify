@@ -3,11 +3,18 @@ import { LockClosedIcon, MinusIcon } from "@heroicons/react/24/outline";
 import { CheckBadgeIcon, PlayIcon } from "@heroicons/react/24/solid";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useAppSelector } from "../redux/hooks";
+import { stat } from "fs";
 type Props = {};
 function CheckoutContainer({}: Props) {
   const [clicked, setClicked] = useState<boolean>(false);
   const [isCalculateClicked, setCalculateClicked] = useState<boolean>(false)
-  console.log(clicked)
+  const cartItems = useAppSelector((state) => state.cart.cart)
+  const subTotal = cartItems.reduce(
+    (sum, { price, quantity }) => sum + price * quantity,
+    0
+  );
+
 
   const variants = {
     rotate: {
@@ -152,7 +159,7 @@ function CheckoutContainer({}: Props) {
           <div>
             <div className=" flex justify-between">
               <span className=" font-bold text-xl">Subtotal</span>
-              <span className=" text-xl">$2,300</span>
+              <span className=" text-xl">${subTotal}</span>
             </div>
             <p className=" text-[12px] text-gray-500">
               Taxes and shipping calculated at checkout

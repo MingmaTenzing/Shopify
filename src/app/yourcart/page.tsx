@@ -1,19 +1,14 @@
-import Image from "next/image";
-import test from "../../../assests/test1.webp";
-import NumberofItems from "../../../utils/Number-of-Items";
-import { TrashIcon } from "@heroicons/react/24/outline";
+"use client";
 import CartItem from "../../../components/CartItem";
-import { PlayIcon } from "@heroicons/react/24/solid";
 import CheckoutContainer from "../../../components/CheckoutContainer";
 import NewsLetter from "../../../components/NewsLetter";
-import WoodstockNews from "../../../components/WoodstockNews";
-import { fetchMensShirts } from "../../../dummyjson/fetch-mens-shirts";
-import { Product } from "../../../types/product-type";
+import { useAppSelector } from "../../../redux/hooks";
 
 type Props = {};
 
-async function YourCart({}: Props) {
-  const data:Product[] = await fetchMensShirts();
+function YourCart({}: Props) {
+  const data = useAppSelector((state) => state.cart.cart);
+
   return (
     <div>
       <div className=" bg-[#f8f8f8]   p-10 space-y-2 ">
@@ -28,27 +23,19 @@ async function YourCart({}: Props) {
       </div>
 
       <div className=" md:flex md:justify-center md:space-x-10 mt-10">
-
-      <section id="cart items  section" className=" md:w-[50%]">
-    
-       
-        {/** CART ITEMs */}
-       {
-        data?.map((product) => <CartItem product={product} key={product.id} />)
-       }
-      </section>
-      <div className=" md:w-[40%]">
-      <CheckoutContainer />
-
+        <section id="cart items  section" className=" md:w-[50%]">
+          {data.map((product) => (
+            <CartItem product={product} key={product.id} />
+          ))}
+        </section>
+        <div className=" md:w-[40%]">
+          <CheckoutContainer />
+        </div>
       </div>
-  
-      </div>
-      
+
       <div className=" pt-10">
-
-      <NewsLetter />
+        <NewsLetter />
       </div>
-      
     </div>
   );
 }
