@@ -21,17 +21,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
 
       <html lang="en">
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
         <body className={inter.className}>
           <Nav />
           {children}
           <Footer />
         </body>
-      </html>
       </PersistGate>
     </Provider>
+      </html>
   );
 }

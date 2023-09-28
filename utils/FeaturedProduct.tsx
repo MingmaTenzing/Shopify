@@ -10,11 +10,14 @@ import { BookmarkIcon } from "@heroicons/react/24/solid";
 import { AnimatePresence, motion } from "framer-motion";
 import { EyeIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
+import { useAppDispatch } from "../redux/hooks";
+import { addToCart } from "../redux/slices/CartItems";
 interface Props {
   product: Product;
 }
 function FeaturedProduct(
   { product }: Props) {
+    const dispatch = useAppDispatch()
   const [favItems, setFavItems] = useState<boolean>(false);
   const router = useRouter();
 
@@ -51,7 +54,7 @@ function FeaturedProduct(
         </p>
       </div>
       <div className="      pt-4 flex items-center  justify-between">
-        <button className=" hover:bg-white  hover:text-blue-500 transition-all ease-linear duration-150 border border-blue-500 bg-blue-500 text-white px-4  py-3 rounded-lg text-sm">
+        <button onClick={() => dispatch(addToCart(product))} className=" hover:bg-white  hover:text-blue-500 transition-all ease-linear duration-150 border border-blue-500 bg-blue-500 text-white px-4  py-3 rounded-lg text-sm">
           Add to cart
         </button>
         {favItems ? (

@@ -1,3 +1,4 @@
+'use client'
 import {
     LockClosedIcon,
   PencilSquareIcon,
@@ -5,17 +6,22 @@ import {
   TruckIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import CartItem from "./CartItem";
-import Image from "next/image";
-import test from "../assests/test1.webp";
-import NumberofItems from "../utils/Number-of-Items";
-import CartModalItem from "./small components/Cart-Modal-Item";
-import { useAppDispatch } from "../redux/hooks";
-import { changeCartModalState } from "../redux/slices/CartModal";
 
-type Props = {};
+import CartModalItem from "./small components/Cart-Modal-Item";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { changeCartModalState } from "../redux/slices/CartModal";
+import { useEffect, useState } from "react";
+import { CartIem } from "../types/cartItem-type";
+
+type Props = {
+};
 function CartModal({}: Props) {
   const dispatch = useAppDispatch();
+
+  
+    const data = useAppSelector((state) => state.cart.cart)
+
+  
   return (
     <div className=" h-[100vh]   w-[340px] drop-shadow-2xl">
 
@@ -25,11 +31,9 @@ function CartModal({}: Props) {
         <XMarkIcon onClick={() => dispatch(changeCartModalState())} className=" w-6" />
       </div>
       <div className=" bg-white max-h-[60vh] w-full overflow-y-scroll scrollbar-hide">
-        <CartModalItem />
-        <CartModalItem />
-        <CartModalItem />
-        <CartModalItem />
-        <CartModalItem />
+      {
+        data?.map((carItem) => <CartModalItem cartItem={carItem} key={carItem.id} />)
+      }
       </div>
       </div>
 

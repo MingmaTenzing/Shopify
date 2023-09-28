@@ -1,19 +1,12 @@
-import Image from "next/image";
-import test from "../../../assests/test1.webp";
-import NumberofItems from "../../../utils/Number-of-Items";
-import { TrashIcon } from "@heroicons/react/24/outline";
-import CartItem from "../../../components/CartItem";
-import { PlayIcon } from "@heroicons/react/24/solid";
+
 import CheckoutContainer from "../../../components/CheckoutContainer";
 import NewsLetter from "../../../components/NewsLetter";
-import WoodstockNews from "../../../components/WoodstockNews";
-import { fetchMensShirts } from "../../../dummyjson/fetch-mens-shirts";
-import { Product } from "../../../types/product-type";
+
 
 type Props = {};
 
-async function YourCart({}: Props) {
-  const data:Product[] = await fetchMensShirts();
+function YourCart({}: Props) {
+
   return (
     <div>
       <div className=" bg-[#f8f8f8]   p-10 space-y-2 ">
@@ -32,10 +25,7 @@ async function YourCart({}: Props) {
       <section id="cart items  section" className=" md:w-[50%]">
     
        
-        {/** CART ITEMs */}
-       {
-        data?.map((product) => <CartItem product={product} key={product.id} />)
-       }
+     
       </section>
       <div className=" md:w-[40%]">
       <CheckoutContainer />

@@ -2,13 +2,19 @@ import Image from "next/image";
 import NumberofItems from "../../utils/Number-of-Items";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import test from "../../assests/test1.webp"
+import { CartIem } from "../../types/cartItem-type";
+import { useAppDispatch } from "../../redux/hooks";
+import { deletefromCart } from "../../redux/slices/CartItems";
 
-type Props = {};
-function CartModalItem({}: Props) {
+type Props = {
+  cartItem: CartIem
+};
+function CartModalItem({cartItem}: Props) {
+  const dispatch = useAppDispatch();
   return (
     <div className=" flex space-x-2 justify-between mt-4 border-b py-3">
       <Image
-        src={test}
+        src={cartItem.thumbnail}
         alt="product"
         width={60}
         height={60}
@@ -16,17 +22,17 @@ function CartModalItem({}: Props) {
       />
       <div className=" flex flex-col space-y-1">
         <span className=" text-[10px] text-gray-400">
-          Wooodstock electronics
+          Wooodstock {cartItem.category}
         </span>
         <h4 className="  text-sm font-semibold">
-          Watch Version 17 sdfds fsd fds a
+         {cartItem.title}
         </h4>
-        <span className=" text-[12px]   text-gray-400">Stock: 14</span>
-        <span className="">$790.00</span>
+        <span className=" text-[12px]   text-gray-400">Stock: {cartItem.stock}</span>
+        <span className="">{cartItem.price}</span>
       </div>
       <div className=" flex flex-col items-end space-y-3">
         <NumberofItems />
-        <TrashIcon className=" w-5" />
+        <TrashIcon onClick={() => dispatch(deletefromCart(cartItem))} className=" w-5" />
       </div>
     </div>
   );

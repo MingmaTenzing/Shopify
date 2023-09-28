@@ -8,11 +8,14 @@ import {
 } from "@heroicons/react/24/outline";
 import NumberofItems from "./Number-of-Items";
 import AddtoCart from "./AddToCart-Button";
+import { useAppDispatch } from "../redux/hooks";
+import { addToCart } from "../redux/slices/CartItems";
 
 type Props = {
   productInfo: Product;
 };
 function ProductDescription({ productInfo }: Props) {
+  const dispatch = useAppDispatch();
   return (
     <div className=" space-y-6 bg-white rounded-lg p-4">
       <div className=" flex space-x-1 items-center">
@@ -32,7 +35,7 @@ function ProductDescription({ productInfo }: Props) {
       <div className=" flex items-center space-x-3">
         <NumberofItems />
 
-        <div>
+        <div onClick={() => dispatch(addToCart(productInfo))}>
             <AddtoCart />
         
         </div>

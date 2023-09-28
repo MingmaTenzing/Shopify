@@ -24,10 +24,14 @@ export const CartItemSlice = createSlice( {
             else {
                 state.cart.push({...action.payload, quantity: 1})
             }
+        },
+        deletefromCart: (state,action) => {
+             const index = state.cart.findIndex((state) => state.id == action.payload.id)
+           state.cart.splice(index,1)
         }
     }
 })
 
-export const { addToCart } = CartItemSlice.actions
+export const { addToCart,deletefromCart } = CartItemSlice.actions
 
 export default CartItemSlice.reducer
