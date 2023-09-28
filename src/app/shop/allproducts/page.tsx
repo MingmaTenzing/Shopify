@@ -7,7 +7,6 @@ import ProductContainer from "../../../../utils/ProductContainer";
 type Props = {}
 async function AllProducts({}: Props) {
    const products:Product[] = await getAllProducts();
-   console.log('tdlkjflksdjflkds ')
 
 
   return (

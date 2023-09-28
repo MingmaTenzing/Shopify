@@ -8,8 +8,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useEffect, useState } from "react";
 import { Product } from "../../../../types/product-type";
-import test1 from "../../../../assests/pinfotest.webp";
-import test2 from "../../../../assests/test1.webp";
+
 import { fetchProductInfo } from "../../../../dummyjson/fetchProductInfo";
 import Image from "next/image";
 import Rating from "../../../../utils/Rating";
@@ -17,13 +16,7 @@ import Rating from "../../../../utils/Rating";
 import ProductDescription from "../../../../utils/ProductDescription";
 import AvailableStock from "../../../../utils/AvailableStock";
 import Recommended from "../../../../utils/Recommended";
-import BrandsCarousel from "../../../../components/BrandsCarousel";
-import Featured from "../../../../components/Featured";
-import Collections from "../../../../components/Collections";
-import Faqs from "../../../../components/Faqs";
-import TopLaptops from "../../../../components/TopLaptops";
-import ProductCategories from "../../../../components/ProductCategories";
-import ProductLoadingSkeleton from "../../../../components/Product-Loading-Skeleton";
+
 type Props = {};
 
 function ProductInfo({}: Props) {

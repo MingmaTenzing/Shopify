@@ -7,7 +7,6 @@ import Image from "next/image";
 type Props = {}
 async function TopMensShirts({}: Props) {
     const  tshirts:Product[] = await fetchMensShirts();
-  console.log(tshirts?.length)
     return (
     <div className=" my-20  lg:w-[1200px] m-auto ">
          <div className="md:ml-4 md:mb-4 relative lg:p-0 p-4 ">
