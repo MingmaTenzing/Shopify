@@ -6,14 +6,16 @@ import { Product } from "../types/product-type"
 import { CartItem } from "../types/cartItem-type"
 import { useDispatch } from "react-redux"
 import { deletefromCart } from "../redux/slices/CartItems"
+import { useRouter } from "next/navigation"
 
 type Props = {
   product:CartItem
 }
 export default function CartItem({product}: Props) {
   const dispatch = useDispatch();
+  const router = useRouter();
   return (
-    <div className=" hover:bg-gray-100"> <div className=" p-4 flex items-center justify-between">
+    <div onClick={() => router.push(`/product/${product.id}`)} className=" hover:bg-gray-100 cursor-pointer"> <div className=" p-4 flex items-center justify-between">
     <div className=" flex space-x-3 md:w-[250px]">
       <Image
         src={product.thumbnail}

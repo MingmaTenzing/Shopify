@@ -67,7 +67,7 @@ function Nav({}: Props) {
   }, [isScrollingY]);
   return (
     <div
-      className={`z-50 ${sticktoTop}  transition-all ease-linear duration-200 relative`}
+      className={`z-50 ${sticktoTop}  transition-all ease-linear duration-200 relative  `}
     >
       {/** NAV BAR FOR SMALL SCREENS */}
       <div className="  p-4 bg-white  z-50 relative  md:px-6 lg:hidden flex justify-between">
@@ -96,7 +96,7 @@ function Nav({}: Props) {
         <div className=" flex space-x-6">
           <MagnifyingGlassIcon className=" w-8" />
           <div onClick={() => dispatch(changeCartModalState())} className=" relative">
-                <ShoppingBagIcon className=" w-8" />
+                <ShoppingBagIcon className="  cursor-pointer w-8" />
                 <span className=" absolute top-0 -right-1 bg-red-500  w-6  text-center text-white rounded-full">{cartItems.length}</span>
 
                 </div>
@@ -226,7 +226,7 @@ function Nav({}: Props) {
                 className=" flex space-x-3 cursor-pointer items-center"
               >
                 <div className=" relative">
-                <ShoppingBagIcon className=" w-10" />
+                <ShoppingBagIcon className=" cursor-pointer w-10" />
                 <span className=" absolute top-0 -right-1 bg-red-500  w-6  text-center text-white rounded-full">{cartItems.length}</span>
 
                 </div>
@@ -364,7 +364,7 @@ function Nav({}: Props) {
               animate={{
                 x: 0,
                 opacity: 1,
-                transition: { duration: 0.2, type: "spring" },
+                transition: { duration: 0.2 },
               }}
               exit={{ x: 10, opacity: 0 }}
             >
