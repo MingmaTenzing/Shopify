@@ -39,7 +39,7 @@ function CheckoutContainer({}: Props) {
     const response = await axios.post("/api/checkout", {
       items: cartItems,
     });
-    window.location = response.data.url;
+    window.location.assign = response.data.url;
   };
 
   return (
