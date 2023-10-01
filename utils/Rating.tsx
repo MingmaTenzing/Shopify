@@ -9,7 +9,7 @@ function Rating({rating}: Props) {
   return (
     <div>
         <div className=" flex">
-        {new Array(Math.floor(rating)).fill(0).map((_, index) => (
+        {new Array(Math.floor(rating)).fill(0).map((_,index) => (
           <Image key={index} src={star} alt="star" className=" w-4  h-4" />
         ))}
         {rating % 2 !== 0 && (

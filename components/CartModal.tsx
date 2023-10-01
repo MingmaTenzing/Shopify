@@ -6,18 +6,21 @@ import {
   TruckIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { ClipLoader } from "react-spinners";
+import { useState } from "react";
 
 import CartModalItem from "./small components/Cart-Modal-Item";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { changeCartModalState } from "../redux/slices/CartModal";
-import { useEffect, useState } from "react";
-import { CartItem } from "../types/cartItem-type";
+
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 type Props = {};
 function CartModal({}: Props) {
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const [isCheckingOut, setIsCheckingOut] = useState<boolean>(false);
 
   const data = useAppSelector((state) => state.cart.cart);
   const subTotal = data.reduce(
@@ -29,6 +32,14 @@ function CartModal({}: Props) {
     dispatch(changeCartModalState());
     router.push("/yourcart");
   }
+
+  const proccedtoCheckout = async () => {
+    setIsCheckingOut(true);
+    const response = await axios.post("/api/checkout", {
+      items: data,
+    });
+    window.location = response.data.url;
+  };
 
   return (
     <div className=" h-[70vh]   w-[340px] drop-shadow-2xl">
@@ -74,10 +85,22 @@ function CartModal({}: Props) {
           >
             View cart
           </button>
-          <button className=" px-4 py-3 font-semibold bg-blue-500 text-white flex space-x-2 rounded-lg">
-            <LockClosedIcon className=" w-5" />
-            <span>Check out</span>
-          </button>
+          {isCheckingOut ? (
+            <div className=" flex justify-center items-center bg-blue-500 w-[143px] h-[52px] rounded-lg">
+              <ClipLoader color="#ffffff" />
+            </div>
+          ) : (
+            <>
+              {" "}
+              <button
+                onClick={proccedtoCheckout}
+                className=" px-4 py-3 font-semibold bg-blue-500 text-white flex space-x-2 rounded-lg"
+              >
+                <LockClosedIcon className=" w-5" />
+                <span>Check out</span>
+              </button>{" "}
+            </>
+          )}
         </div>
       </div>
     </div>

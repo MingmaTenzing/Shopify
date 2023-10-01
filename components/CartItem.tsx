@@ -15,16 +15,17 @@ export default function CartItem({product}: Props) {
   const dispatch = useDispatch();
   const router = useRouter();
   return (
-    <div onClick={() => router.push(`/product/${product.id}`)} className=" hover:bg-gray-100 cursor-pointer"> <div className=" p-4 flex items-center justify-between">
+    <div className=" hover:bg-gray-100 cursor-pointer"> <div className=" p-4 flex items-center justify-between">
     <div className=" flex space-x-3 md:w-[250px]">
       <Image
         src={product.thumbnail}
         alt=" product image"
         width={96}
         height={50}
+        onClick={() => router.push(`/product/${product.id}`)} 
         className=" bg-[#fafafa] w-24 object-cover"
       />
-      <div className=" space-y-2">
+      <div onClick={() => router.push(`/product/${product.id}`)}  className=" space-y-2">
         <p className=" text-[12px]">Woodstock {product.category}</p>
         <p className=" font-semibold">{product.title}</p>
         <p className=" text-gray-500">Stock - {product.stock}</p>
