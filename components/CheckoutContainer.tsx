@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useAppSelector } from "../redux/hooks";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+import { ClipLoader } from "react-spinners";
 
 type Props = {};
 const stripePromise = loadStripe(
@@ -15,9 +16,9 @@ const stripePromise = loadStripe(
 
 function CheckoutContainer({}: Props) {
   const [clicked, setClicked] = useState<boolean>(false);
+  const [isCheckingOut, setIsCheckingOut] = useState<boolean>(false);
   const [isCalculateClicked, setCalculateClicked] = useState<boolean>(false);
   const cartItems = useAppSelector((state) => state.cart.cart);
-
 
   const subTotal = cartItems.reduce(
     (sum, { price, quantity }) => sum + price * quantity,
@@ -33,15 +34,13 @@ function CheckoutContainer({}: Props) {
     },
   };
 
-
-  const proccedtoCheckout = async() => {
+  const proccedtoCheckout = async () => {
+    setIsCheckingOut(true);
     const response = await axios.post("/api/checkout", {
-      items: cartItems
-    })
+      items: cartItems,
+    });
     window.location = response.data.url;
-
-  }
- 
+  };
 
   return (
     <div className="  overflow-hidden">
@@ -193,14 +192,23 @@ function CheckoutContainer({}: Props) {
             </p>
           </div>
 
-            <button onClick={proccedtoCheckout}
+          {isCheckingOut ? (
+            <div className=" flex justify-center items-center bg-blue-500 w-[143px] h-[56px] rounded-lg">
+              <ClipLoader color="#ffffff" />
+            </div>
+          ) : (
+            <>
+              {" "}
+              <button
+                onClick={proccedtoCheckout}
+                className=" flex hover:bg-transparent hover:border hover:border-blue-500 hover:text-blue-500 transition-all ease-linear duration-200 cursor-pointer bg-blue-500 text-white p-4 rounded-lg justify-center space-x-2 items-center"
+              >
+                <LockClosedIcon className=" font-bold w-6" />
 
-              className=" flex hover:bg-transparent hover:border hover:border-blue-500 hover:text-blue-500 transition-all ease-linear duration-200 cursor-pointer bg-blue-500 text-white p-4 rounded-lg justify-center space-x-2 items-center"
-            >
-              <LockClosedIcon className=" font-bold w-6" />
-              <span className=" font-semibold">Check out</span>
-            </button>
-          
+                <span className=" font-semibold">Check out</span>
+              </button>
+            </>
+          )}
         </div>
       </section>
       <div className=" flex flex-nowrap -space-x-2 -mt-2">
