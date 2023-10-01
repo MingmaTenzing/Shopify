@@ -1,4 +1,5 @@
 "use client";
+import axios from "axios";
 import CartItem from "../../../components/CartItem";
 import CheckoutContainer from "../../../components/CheckoutContainer";
 import NewsLetter from "../../../components/NewsLetter";
@@ -7,7 +8,9 @@ import { useAppSelector } from "../../../redux/hooks";
 type Props = {};
 
 function YourCart({}: Props) {
-  const data = useAppSelector((state) => state.cart.cart);
+  const cartItems = useAppSelector((state) => state.cart.cart);
+
+ 
 
   return (
     <div>
@@ -24,7 +27,7 @@ function YourCart({}: Props) {
 
       <div className=" md:flex md:justify-center md:space-x-10 mt-10">
         <section id="cart items  section" className=" md:w-[50%]">
-          {data.map((product) => (
+          {cartItems.map((product) => (
             <CartItem product={product} key={product.id} />
           ))}
         </section>

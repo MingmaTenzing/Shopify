@@ -1,20 +1,28 @@
 "use client";
+
 import { LockClosedIcon, MinusIcon } from "@heroicons/react/24/outline";
 import { CheckBadgeIcon, PlayIcon } from "@heroicons/react/24/solid";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useAppSelector } from "../redux/hooks";
-import { stat } from "fs";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+
 type Props = {};
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
+);
+
 function CheckoutContainer({}: Props) {
   const [clicked, setClicked] = useState<boolean>(false);
-  const [isCalculateClicked, setCalculateClicked] = useState<boolean>(false)
-  const cartItems = useAppSelector((state) => state.cart.cart)
+  const [isCalculateClicked, setCalculateClicked] = useState<boolean>(false);
+  const cartItems = useAppSelector((state) => state.cart.cart);
+
+
   const subTotal = cartItems.reduce(
     (sum, { price, quantity }) => sum + price * quantity,
     0
   );
-
 
   const variants = {
     rotate: {
@@ -24,6 +32,17 @@ function CheckoutContainer({}: Props) {
       rotate: 0,
     },
   };
+
+
+  const proccedtoCheckout = async() => {
+    const response = await axios.post("/api/checkout", {
+      items: cartItems
+    })
+    window.location = response.data.url;
+
+  }
+ 
+
   return (
     <div className="  overflow-hidden">
       {" "}
@@ -92,20 +111,24 @@ function CheckoutContainer({}: Props) {
                   animate={clicked ? "stop" : "rotate"}
                   className="  absolute    top-2  z-20 "
                 >
-                  <MinusIcon className=" w-4  "       />
+                  <MinusIcon className=" w-4  " />
                 </motion.div>
               </div>
             </div>
             <AnimatePresence>
               {clicked && (
-                <motion.div 
-                initial={{opacity:0}}
-                animate={{opacity: 1 , transition:{duration:2, type:"spring", ease:"linear"} }}
-                exit={{opacity:1, transition:{duration:0.2, ease:"linear"}}}
-                
-                
-                
-                className=" space-y-6">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: { duration: 2, type: "spring", ease: "linear" },
+                  }}
+                  exit={{
+                    opacity: 1,
+                    transition: { duration: 0.2, ease: "linear" },
+                  }}
+                  className=" space-y-6"
+                >
                   <div className=" flex flex-col space-y-2">
                     <label className=" uppercase font-semibold">
                       Country/Region
@@ -128,28 +151,32 @@ function CheckoutContainer({}: Props) {
                     ></input>
                   </div>
                   <div>
-                    <button onClick={() => setCalculateClicked(true)} className=" px-4 py-2 border rounded-lg text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white transition-all ease-linear duration-200">
+                    <button
+                      onClick={() => setCalculateClicked(true)}
+                      className=" px-4 py-2 border rounded-lg text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white transition-all ease-linear duration-200"
+                    >
                       Calculate
                     </button>
                   </div>
                   <AnimatePresence>
-
-                  {
-                    isCalculateClicked && 
-                  <motion.div
-                  initial={{y:20}}
-                  animate={{y:0}}
-                  exit={{y:20}}
-                  className=" space-y-3">
-                    <div className=" flex space-x-2 bg-green-100 p-4 rounded-lg">
-                      <CheckBadgeIcon className=" text-green-500 w-6" />
-                      <p className=" text-green-500">
-                        Available shipping carriers
-                      </p>
-                    </div>
-                    <p className=" text-sm text-gray-500">Standard: $30.55</p>
-                  </motion.div>
-                  }
+                    {isCalculateClicked && (
+                      <motion.div
+                        initial={{ y: 20 }}
+                        animate={{ y: 0 }}
+                        exit={{ y: 20 }}
+                        className=" space-y-3"
+                      >
+                        <div className=" flex space-x-2 bg-green-100 p-4 rounded-lg">
+                          <CheckBadgeIcon className=" text-green-500 w-6" />
+                          <p className=" text-green-500">
+                            Available shipping carriers
+                          </p>
+                        </div>
+                        <p className=" text-sm text-gray-500">
+                          Standard: $30.55
+                        </p>
+                      </motion.div>
+                    )}
                   </AnimatePresence>
                 </motion.div>
               )}
@@ -165,57 +192,62 @@ function CheckoutContainer({}: Props) {
               Taxes and shipping calculated at checkout
             </p>
           </div>
-          <div className=" flex hover:bg-transparent hover:border hover:border-blue-500 hover:text-blue-500 transition-all ease-linear duration-200 cursor-pointer bg-blue-500 text-white p-4 rounded-lg justify-center space-x-2 items-center">
-            <LockClosedIcon className=" font-bold w-6" />
-            <span className=" font-semibold">Check out</span>
-          </div>
+
+            <button onClick={proccedtoCheckout}
+
+              className=" flex hover:bg-transparent hover:border hover:border-blue-500 hover:text-blue-500 transition-all ease-linear duration-200 cursor-pointer bg-blue-500 text-white p-4 rounded-lg justify-center space-x-2 items-center"
+            >
+              <LockClosedIcon className=" font-bold w-6" />
+              <span className=" font-semibold">Check out</span>
+            </button>
+          
         </div>
       </section>
       <div className=" flex flex-nowrap -space-x-2 -mt-2">
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
 
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
 
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
 
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
 
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
 
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
 
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
 
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
 
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
 
-          <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
-        </div>
+        <PlayIcon className=" text-[#f8f8f8] w-10  rotate-90" />
+      </div>
     </div>
   );
 }

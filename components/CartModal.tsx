@@ -6,6 +6,7 @@ import {
   TruckIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { loadStripe } from "@stripe/stripe-js";
 
 import CartModalItem from "./small components/Cart-Modal-Item";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
@@ -13,6 +14,7 @@ import { changeCartModalState } from "../redux/slices/CartModal";
 import { useEffect, useState } from "react";
 import { CartItem } from "../types/cartItem-type";
 import { useRouter } from "next/navigation";
+
 
 type Props = {};
 function CartModal({}: Props) {
@@ -67,14 +69,21 @@ function CartModal({}: Props) {
             Taxes and shipping calculate at checkout
           </p>
         </div>
-        <div className=" flex justify-center space-x-4">
+        <div
+         
+          className=" flex justify-center space-x-4"
+        >
           <button
             onClick={viewCart}
             className="  px-4 py-3 font-semibold border border-blue-500 text-blue-500 rounded-lg"
           >
             View cart
           </button>
-          <button className=" px-4 py-3 font-semibold bg-blue-500 text-white flex space-x-2 rounded-lg">
+          <button
+            type="submit"
+            role="link"
+            className=" px-4 py-3 font-semibold bg-blue-500 text-white flex space-x-2 rounded-lg"
+          >
             <LockClosedIcon className=" w-5" />
             <span>Check out</span>
           </button>
