@@ -11,6 +11,13 @@ import WoodstockNews from "../../components/WoodstockNews";
 import Faqs from "../../components/Faqs";
 import NewsLetter from "../../components/NewsLetter";
 import Footer from "../../components/Footer";
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "Woodstock Ecommerce",
+  description: "All the things you need in oneplace.",
+};
 
 export default function Home() {
   return (

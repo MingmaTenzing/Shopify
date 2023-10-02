@@ -10,9 +10,7 @@ import axios from "axios";
 import { ClipLoader } from "react-spinners";
 
 type Props = {};
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-);
+
 
 function CheckoutContainer({}: Props) {
   const [clicked, setClicked] = useState<boolean>(false);
@@ -39,8 +37,7 @@ function CheckoutContainer({}: Props) {
     const response = await axios.post("/api/checkout", {
       items: cartItems,
     });
-    window.location.assign = response.data.url;
-  };
+    window.location = response.data.url;  };
 
   return (
     <div className="  overflow-hidden">

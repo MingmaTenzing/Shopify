@@ -39,8 +39,8 @@ export async function POST(req: Request) {
     phone_number_collection: {
       enabled: false,
     },
-    success_url: `http://localhost:3000`,
-    cancel_url: `http://localhost:3000`,
+    success_url: process.env.HOST_NAME!,
+    cancel_url: process.env.HOST_NAME!
   });
 
   return NextResponse.json({ url: session.url });
