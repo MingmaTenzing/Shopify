@@ -1,13 +1,6 @@
 "use client";
+import { TruckIcon, UserIcon } from "@heroicons/react/24/outline";
 import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  TruckIcon,
-  UserIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
-import {
-  Bars3Icon,
   MagnifyingGlassIcon,
   ShoppingBagIcon,
   MicrophoneIcon,
@@ -17,27 +10,24 @@ import {
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import logo from "../assests/logo.webp";
-import twitter from "../assests/socials/twitter.svg";
-import facebook from "../assests/socials/facebook.svg";
-import pinterest from "../assests/socials/pinterest.svg";
-import instagram from "../assests/socials/instagram.svg";
-import { useRef } from "react";
+
+import { FormEvent, useRef } from "react";
 import { useScrollDirection } from "react-use-scroll-direction";
 import { useHover } from "usehooks-ts";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import StoreHover from "./small components/StoreHover";
 import NavTopSection from "./small components/Nav-top-section";
 import CartModal from "./CartModal";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { changeCartModalState } from "../redux/slices/CartModal";
+import SmallNav from "./small components/SmallNav";
 
 type Props = {};
 function Nav({}: Props) {
-  const [isModalOpen, setisModalOpen] = useState<boolean>(false);
+  const [searchQuery, setSearchQuery] = useState<string>();
 
   const watchHover = useRef(null);
   const isHover = useHover(watchHover);
@@ -65,129 +55,18 @@ function Nav({}: Props) {
       setSticktoTop("");
     }
   }, [isScrollingY]);
+
+  function search(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    router.push(`/search/${searchQuery}`);
+  }
   return (
     <div
       className={`z-50 ${sticktoTop}  transition-all ease-linear duration-200 relative  `}
     >
       {/** NAV BAR FOR SMALL SCREENS */}
-      <div className="  p-4 bg-white  z-50 relative  md:px-6 lg:hidden flex justify-between">
-        <div className=" flex space-x-6">
-          {isModalOpen ? (
-            <XMarkIcon
-              className=" w-8 cursor-pointer"
-              onClick={() => setisModalOpen(!isModalOpen)}
-            />
-          ) : (
-            <Bars3Icon
-              className=" w-8 cursor-pointer"
-              onClick={() => setisModalOpen(!isModalOpen)}
-            />
-          )}
+      <SmallNav />
 
-          <UserIcon className="w-8" />
-        </div>
-
-        <Image
-          src={logo}
-          alt="logo"
-          onClick={() => router.push("/")}
-          className=" cursor-pointer w-20"
-        />
-        <div className=" flex space-x-6">
-          <MagnifyingGlassIcon className=" w-8" />
-          <div onClick={() => dispatch(changeCartModalState())} className=" relative">
-                <ShoppingBagIcon className="  cursor-pointer w-8" />
-                <span className=" absolute top-0 -right-1 bg-red-500  w-6  text-center text-white rounded-full">{cartItems.length}</span>
-
-                </div>
-
-        </div>
-
-        {/** MODAL FOR SMALL DEVICES */}
-        <AnimatePresence>
-          {isModalOpen && (
-            <motion.div
-              initial={{ x: -20 }}
-              animate={{ x: 0, transition: { stiffness: 300, type: "spring" } }}
-              transition={{ duration: 0.3, ease: "linear" }}
-              exit={{ x: -20, opacity: 0 }}
-              className=" space-y-5 absolute left-0 top-[72px] bg-white w-[80%] md:w-[300px] p-4 "
-            >
-              <div className=" flex  flex-col space-y-2">
-                <Link href="/shop/allproducts">
-                  <div
-                    onClick={() => setisModalOpen(false)}
-                    className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between"
-                  >
-                    <p>All Products</p>
-                    <ChevronRightIcon className=" w-4" />
-                  </div>
-                </Link>
-                <Link href="/shop/mens-watches">
-                  <div
-                    onClick={() => setisModalOpen(false)}
-                    className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between"
-                  >
-                    <p>Watch</p>
-                    <ChevronRightIcon className=" w-4" />
-                  </div>
-                </Link>
-                <Link href="/shop/smartphones">
-                  <div
-                    onClick={() => setisModalOpen(false)}
-                    className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between"
-                  >
-                    <p>Smartphones</p>
-                    <ChevronRightIcon className=" w-4" />
-                  </div>
-                </Link>
-                <Link href="/shop/laptops">
-                  <div
-                    onClick={() => setisModalOpen(false)}
-                    className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between"
-                  >
-                    <p>Laptops</p>
-                    <ChevronRightIcon className=" w-4" />
-                  </div>
-                </Link>
-                <Link href="/shop/automotive">
-                  <div
-                    onClick={() => setisModalOpen(false)}
-                    className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between"
-                  >
-                    <p>Accessories</p>
-                    <ChevronRightIcon className=" w-4" />
-                  </div>
-                </Link>
-                <Link href="/shop/skincare">
-                  <div
-                    onClick={() => setisModalOpen(false)}
-                    className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between"
-                  >
-                    <p>Skincare</p>
-                    <ChevronRightIcon className=" w-4" />
-                  </div>
-                </Link>
-              </div>
-              <div className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-between">
-                <div className=" flex space-x-3 items-center">
-                  <MicrophoneIcon className="w-6" />
-                  <div>
-                    <p className=" text-[10px] font-light">Customer Support</p>
-                    <p>1-800-123-45-67</p>
-                  </div>
-                </div>
-              </div>
-              <div className=" bg-gray-100 py-4 px-3 hover:bg-gray-200 cursor-pointer rounded-lg text-sm font-semibold flex justify-around">
-                <Image src={facebook} alt="socials" className=" w-8" />
-                <Image src={pinterest} alt="socials" className=" w-8" />
-                <Image src={twitter} alt="socials" className=" w-8" />
-                <Image src={instagram} alt="socials" className=" w-8" />
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
       {/*  Nav bar for large Screen */}
 
       <NavTopSection />
@@ -202,13 +81,19 @@ function Nav({}: Props) {
             />
           </div>
           <div className=" flex  space-x-4">
-            <div className=" flex w-[400px] h-[70px] bg-slate-100 p-4 rounded-lg">
+            <form
+              onSubmit={search}
+              className=" flex w-[400px] h-[70px] bg-slate-100 p-4 rounded-lg"
+            >
               <input
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className="  outline-none   flex-grow   bg-slate-100"
                 placeholder="Search"
               ></input>
-              <MagnifyingGlassIcon className=" w-8 flex " />
-            </div>
+              <button type="submit">
+                <MagnifyingGlassIcon className=" w-8 flex " />
+              </button>
+            </form>
             <div className="bg-slate-100  space-x-2 w-[240px]  rounded-lg  flex justify-center items-center p-2 ">
               <div>
                 <MicrophoneIcon className="w-8 text-gray-500" />{" "}
@@ -226,9 +111,10 @@ function Nav({}: Props) {
                 className=" flex space-x-3 cursor-pointer items-center"
               >
                 <div className=" relative">
-                <ShoppingBagIcon className=" cursor-pointer w-10" />
-                <span className=" absolute top-0 -right-1 bg-red-500  w-6  text-center text-white rounded-full">{cartItems.length}</span>
-
+                  <ShoppingBagIcon className=" cursor-pointer w-10" />
+                  <span className=" absolute top-0 -right-1 bg-red-500  w-6  text-center text-white rounded-full">
+                    {cartItems.length}
+                  </span>
                 </div>
 
                 <div>
