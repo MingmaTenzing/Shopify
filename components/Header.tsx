@@ -27,10 +27,7 @@ function Header({}: Props) {
       >
         <SwiperSlide>
           <div ref={ref} className=" relative w-full h-[80vh] ">
-            <motion.div className=" w-full h-full"
-              initial={{  scale: 2}}
-              whileInView={{ scale: 1 }}
-            >
+            <motion.div className=" w-full h-full">
               <Image
                 src={img1}
                 alt="slide image"

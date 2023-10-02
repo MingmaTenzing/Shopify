@@ -163,12 +163,12 @@ function Nav({}: Props) {
                     className=" bg-white absolute z-20 -bottom-[154px] -right-14    space-y-3   rounded-lg  w-[180px] p-6  "
                   >
                     <div className="group/category">
-                      <p>Men&apos;s Watch</p>
+                      <p onClick={() => router.push("/shop/mens-watches")}>Men&apos;s Watch</p>
                       <div className=" w-0 h-[1px] group-hover/category:w-full transition-all ease-linear  duration-200 bg-black"></div>
                     </div>
 
                     <div className="group/category">
-                      <p>Women&apos;s Watch</p>
+                      <p onClick={() => router.push("/shop/womens-watches")}>Women&apos;s Watch</p>
                       <div className=" w-0 h-[1px] group-hover/category:w-full transition-all ease-linear  duration-200 bg-black"></div>
                     </div>
                   </motion.div>
@@ -176,56 +176,20 @@ function Nav({}: Props) {
               </AnimatePresence>
             </div>
             <div className="flex space-x-2 items-center group  cursor-pointer">
-              <p className=" font-semibold hover:underline transition ease-linear duration-150">
-                Smartphones
+              <p onClick={() => router.push("/shop/skincare")} className=" font-semibold hover:underline transition ease-linear duration-150">
+                Skincare
               </p>
-              <ChevronDownIcon className=" w-6 group-hover:rotate-180 transition-all ease-linear duration-200 " />
             </div>
-            <div
-              ref={accessoriesHover}
-              className="flex relative space-x-2 items-center group  cursor-pointer"
-            >
-              <p className=" font-semibold hover:underline transition ease-linear duration-150">
-                Accessories
+        
+            <div className="flex space-x-2 items-center group  cursor-pointer">
+              <p onClick={() => router.push("/shop/furniture")} className=" font-semibold hover:underline transition ease-linear duration-150">
+                Furniture
               </p>
-              <ChevronDownIcon className=" w-6 group-hover:rotate-180 transition-all ease-linear duration-200 " />
-              {/** HOVER OPTIONS */}
-              <AnimatePresence>
-                {isAccessoriesHover && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -40 }}
-                    className=" bg-white absolute -bottom-[154px] z-20 -right-14    space-y-3   rounded-lg  w-[180px] p-6  "
-                  >
-                    <div className="group/category">
-                      <p>Automotive</p>
-                      <div className=" w-0 h-[1px] group-hover/category:w-full transition-all ease-linear  duration-200 bg-black"></div>
-                    </div>
-
-                    <div className="group/category">
-                      <p>Motorcycle</p>
-                      <div className=" w-0 h-[1px] group-hover/category:w-full transition-all ease-linear  duration-200 bg-black"></div>
-                    </div>
-                    <div className="group/category">
-                      <p>Lightning</p>
-                      <div className=" w-0 h-[1px] group-hover/category:w-full transition-all ease-linear  duration-200 bg-black"></div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
             <div className="flex space-x-2 items-center group  cursor-pointer">
-              <p className=" font-semibold hover:underline transition ease-linear duration-150">
-                Laptops
+              <p onClick={() => router.push("/shop/womens-jewellery")} className=" font-semibold hover:underline transition ease-linear duration-150">
+                Jewellery
               </p>
-              <ChevronDownIcon className=" w-6 group-hover:rotate-180 transition-all ease-linear duration-200 " />
-            </div>
-            <div className="flex space-x-2 items-center group  cursor-pointer">
-              <p className=" font-semibold hover:underline transition ease-linear duration-150">
-                Support
-              </p>
-              <ChevronDownIcon className=" w-6 group-hover:rotate-180 transition-all ease-linear duration-200 " />
             </div>
           </div>
 
