@@ -99,22 +99,41 @@ function Nav({}: Props) {
             </div>
             <div className=" flex space-x-6">
               <UserIcon className=" w-10" />
-              <div
-                onClick={() => dispatch(changeCartModalState())}
-                className=" flex space-x-3 cursor-pointer items-center"
-              >
-                <div className=" relative">
-                  <ShoppingBagIcon className=" cursor-pointer w-10" />
-                  <span className=" absolute top-0 -right-1 bg-red-500  w-6  text-center text-white rounded-full">
-                    {cartItems.length}
-                  </span>
-                </div>
+              {cartItems.length == 0 ? (
+                <div
+                  onClick={() => window.alert("Please Add Items to Cart")}
+                  className=" flex space-x-3 cursor-pointer items-center"
+                >
+                  <div className=" relative">
+                    <ShoppingBagIcon className=" cursor-pointer w-10" />
+                    <span className=" absolute top-0 -right-1 bg-red-500  w-6  text-center text-white rounded-full">
+                      {cartItems.length}
+                    </span>
+                  </div>
 
-                <div>
-                  <p className=" text-sm text-gray-400">Subtotal</p>
-                  <p className=" font-bold">${subTotal}</p>
+                  <div>
+                    <p className=" text-sm text-gray-400">Subtotal</p>
+                    <p className=" font-bold">${subTotal}</p>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div
+                  onClick={() => dispatch(changeCartModalState())}
+                  className=" flex space-x-3 cursor-pointer items-center"
+                >
+                  <div className=" relative">
+                    <ShoppingBagIcon className=" cursor-pointer w-10" />
+                    <span className=" absolute top-0 -right-1 bg-red-500  w-6  text-center text-white rounded-full">
+                      {cartItems.length}
+                    </span>
+                  </div>
+
+                  <div>
+                    <p className=" text-sm text-gray-400">Subtotal</p>
+                    <p className=" font-bold">${subTotal}</p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
