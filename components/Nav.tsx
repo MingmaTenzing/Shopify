@@ -12,12 +12,11 @@ import Image from "next/image";
 import logo from "../assests/logo.webp";
 
 import { FormEvent, useRef } from "react";
-import { useScrollDirection } from "react-use-scroll-direction";
 import { useHover } from "usehooks-ts";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import StoreHover from "./small components/StoreHover";
 import NavTopSection from "./small components/Nav-top-section";
 import CartModal from "./CartModal";
@@ -27,6 +26,9 @@ import SmallNav from "./small components/SmallNav";
 
 type Props = {};
 function Nav({}: Props) {
+  const route = useParams();
+
+  console.log(route);
   const [searchQuery, setSearchQuery] = useState<string>();
 
   const watchHover = useRef(null);
@@ -35,7 +37,6 @@ function Nav({}: Props) {
   const isAccessoriesHover = useHover(accessoriesHover);
   const storeHover = useRef(null);
   const isStoresHover = useHover(storeHover);
-  const { isScrollingUp, isScrollingDown, isScrollingY } = useScrollDirection();
   const [sticktoTop, setSticktoTop] = useState<string>("");
   const router = useRouter();
 
@@ -47,14 +48,6 @@ function Nav({}: Props) {
   );
 
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    if (isScrollingUp) {
-      setSticktoTop(" sticky top-0");
-    }
-    if (isScrollingDown) {
-      setSticktoTop("");
-    }
-  }, [isScrollingY]);
 
   function search(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -106,22 +99,41 @@ function Nav({}: Props) {
             </div>
             <div className=" flex space-x-6">
               <UserIcon className=" w-10" />
-              <div
-                onClick={() => dispatch(changeCartModalState())}
-                className=" flex space-x-3 cursor-pointer items-center"
-              >
-                <div className=" relative">
-                  <ShoppingBagIcon className=" cursor-pointer w-10" />
-                  <span className=" absolute top-0 -right-1 bg-red-500  w-6  text-center text-white rounded-full">
-                    {cartItems.length}
-                  </span>
-                </div>
+              {cartItems.length == 0 ? (
+                <div
+                  onClick={() => window.alert("Please Add Items to Cart")}
+                  className=" flex space-x-3 cursor-pointer items-center"
+                >
+                  <div className=" relative">
+                    <ShoppingBagIcon className=" cursor-pointer w-10" />
+                    <span className=" absolute top-0 -right-1 bg-red-500  w-6  text-center text-white rounded-full">
+                      {cartItems.length}
+                    </span>
+                  </div>
 
-                <div>
-                  <p className=" text-sm text-gray-400">Subtotal</p>
-                  <p className=" font-bold">${subTotal}</p>
+                  <div>
+                    <p className=" text-sm text-gray-400">Subtotal</p>
+                    <p className=" font-bold">${subTotal}</p>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div
+                  onClick={() => dispatch(changeCartModalState())}
+                  className=" flex space-x-3 cursor-pointer items-center"
+                >
+                  <div className=" relative">
+                    <ShoppingBagIcon className=" cursor-pointer w-10" />
+                    <span className=" absolute top-0 -right-1 bg-red-500  w-6  text-center text-white rounded-full">
+                      {cartItems.length}
+                    </span>
+                  </div>
+
+                  <div>
+                    <p className=" text-sm text-gray-400">Subtotal</p>
+                    <p className=" font-bold">${subTotal}</p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -163,12 +175,16 @@ function Nav({}: Props) {
                     className=" bg-white absolute z-20 -bottom-[154px] -right-14    space-y-3   rounded-lg  w-[180px] p-6  "
                   >
                     <div className="group/category">
-                      <p onClick={() => router.push("/shop/mens-watches")}>Men&apos;s Watch</p>
+                      <p onClick={() => router.push("/shop/mens-watches")}>
+                        Men&apos;s Watch
+                      </p>
                       <div className=" w-0 h-[1px] group-hover/category:w-full transition-all ease-linear  duration-200 bg-black"></div>
                     </div>
 
                     <div className="group/category">
-                      <p onClick={() => router.push("/shop/womens-watches")}>Women&apos;s Watch</p>
+                      <p onClick={() => router.push("/shop/womens-watches")}>
+                        Women&apos;s Watch
+                      </p>
                       <div className=" w-0 h-[1px] group-hover/category:w-full transition-all ease-linear  duration-200 bg-black"></div>
                     </div>
                   </motion.div>
@@ -176,18 +192,27 @@ function Nav({}: Props) {
               </AnimatePresence>
             </div>
             <div className="flex space-x-2 items-center group  cursor-pointer">
-              <p onClick={() => router.push("/shop/skincare")} className=" font-semibold hover:underline transition ease-linear duration-150">
+              <p
+                onClick={() => router.push("/shop/skincare")}
+                className=" font-semibold hover:underline transition ease-linear duration-150"
+              >
                 Skincare
               </p>
             </div>
-        
+
             <div className="flex space-x-2 items-center group  cursor-pointer">
-              <p onClick={() => router.push("/shop/furniture")} className=" font-semibold hover:underline transition ease-linear duration-150">
+              <p
+                onClick={() => router.push("/shop/furniture")}
+                className=" font-semibold hover:underline transition ease-linear duration-150"
+              >
                 Furniture
               </p>
             </div>
             <div className="flex space-x-2 items-center group  cursor-pointer">
-              <p onClick={() => router.push("/shop/womens-jewellery")} className=" font-semibold hover:underline transition ease-linear duration-150">
+              <p
+                onClick={() => router.push("/shop/womens-jewellery")}
+                className=" font-semibold hover:underline transition ease-linear duration-150"
+              >
                 Jewellery
               </p>
             </div>
