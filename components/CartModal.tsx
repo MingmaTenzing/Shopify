@@ -7,7 +7,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { ClipLoader } from "react-spinners";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import CartModalItem from "./small components/Cart-Modal-Item";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
