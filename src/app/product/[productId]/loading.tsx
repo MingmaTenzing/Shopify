@@ -1,10 +1,5 @@
-import ProductLoadingSkeleton from "../../../../components/Product-Loading-Skeleton"
-
-type Props = {}
+type Props = {};
 function loading({}: Props) {
-  return (
-    <ProductLoadingSkeleton />
-
-  )
+  return <> </>;
 }
-export default loading
+export default loading;
