@@ -28,7 +28,6 @@ type Props = {};
 function Nav({}: Props) {
   const route = useParams();
 
-  console.log(route);
   const [searchQuery, setSearchQuery] = useState<string>();
 
   const watchHover = useRef(null);

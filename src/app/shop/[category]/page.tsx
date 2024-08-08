@@ -21,12 +21,9 @@ function Category() {
     }
     fetchitems();
   }, []);
-  
 
   return (
     <div>
-   
-
       {/** PRODUCTS */}
       <div className=" mt-20 flex flex-wrap justify-center  lg:w-[1200px] m-auto ">
         {products?.map((product) => (
