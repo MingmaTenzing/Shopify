@@ -6,16 +6,14 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2023-08-16",
   typescript: true,
 });
+const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
 
-
-export async function POST(req: Request) {
+export async function POST(req: Request, res: Response) {
   const { items } = await req.json();
 
   if (!items) {
     return new NextResponse("Products not found", { status: 400 });
   }
-
-  const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
 
   items.forEach((product: CartItem) => {
     line_items.push({
@@ -32,16 +30,18 @@ export async function POST(req: Request) {
     });
   });
 
-  const session = await stripe.checkout.sessions.create({
-    line_items,
-    mode: "payment",
-    billing_address_collection: "auto",
-    phone_number_collection: {
-      enabled: false,
-    },
-    success_url: process.env.HOST_NAME!,
-    cancel_url: process.env.HOST_NAME!
-  });
+  if (line_items.length > 0) {
+    const session = await stripe.checkout.sessions.create({
+      line_items,
+      mode: "payment",
+      billing_address_collection: "auto",
+      phone_number_collection: {
+        enabled: false,
+      },
+      success_url: process.env.HOST_NAME!,
+      cancel_url: process.env.HOST_NAME!,
+    });
 
-  return NextResponse.json({ url: session.url });
+    return NextResponse.json({ url: session.url });
+  }
 }

@@ -11,7 +11,6 @@ import { ClipLoader } from "react-spinners";
 
 type Props = {};
 
-
 function CheckoutContainer({}: Props) {
   const [clicked, setClicked] = useState<boolean>(false);
   const [isCheckingOut, setIsCheckingOut] = useState<boolean>(false);
@@ -37,7 +36,8 @@ function CheckoutContainer({}: Props) {
     const response = await axios.post("/api/checkout", {
       items: cartItems,
     });
-    window.location = response.data.url;  };
+    window.location = response.data.url;
+  };
 
   return (
     <div className="  overflow-hidden">
