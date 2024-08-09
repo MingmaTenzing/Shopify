@@ -1,14 +1,13 @@
 import Stripe from "stripe";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { CartItem } from "../../../../types/cartItem-type";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2023-08-16",
-  typescript: true,
 });
 const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
 
-export async function POST(req: Request, res: Response) {
+export async function POST(req: NextRequest, res: NextResponse) {
   const { items } = await req.json();
 
   if (!items) {
@@ -35,10 +34,6 @@ export async function POST(req: Request, res: Response) {
       const session = await stripe.checkout.sessions.create({
         line_items,
         mode: "payment",
-        billing_address_collection: "auto",
-        phone_number_collection: {
-          enabled: false,
-        },
         success_url: process.env.HOST_NAME!,
         cancel_url: process.env.HOST_NAME!,
       });

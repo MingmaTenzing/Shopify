@@ -33,10 +33,20 @@ function CheckoutContainer({}: Props) {
 
   const proccedtoCheckout = async () => {
     setIsCheckingOut(true);
-    const response = await axios.post("/api/checkout", {
-      items: cartItems,
-    });
-    window.location = response.data.url;
+
+    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
+
+    if (!stripe) {
+      return;
+    }
+    try {
+      const response = await axios.post("/api/checkout", {
+        items: cartItems,
+      });
+      window.location = response.data.url;
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
