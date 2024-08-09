@@ -31,17 +31,21 @@ export async function POST(req: Request, res: Response) {
   });
 
   if (line_items.length > 0) {
-    const session = await stripe.checkout.sessions.create({
-      line_items,
-      mode: "payment",
-      billing_address_collection: "auto",
-      phone_number_collection: {
-        enabled: false,
-      },
-      success_url: process.env.HOST_NAME!,
-      cancel_url: process.env.HOST_NAME!,
-    });
+    try {
+      const session = await stripe.checkout.sessions.create({
+        line_items,
+        mode: "payment",
+        billing_address_collection: "auto",
+        phone_number_collection: {
+          enabled: false,
+        },
+        success_url: process.env.HOST_NAME!,
+        cancel_url: process.env.HOST_NAME!,
+      });
 
-    return NextResponse.json({ url: session.url });
+      return NextResponse.json({ url: session.url });
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
